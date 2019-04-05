@@ -7,8 +7,9 @@ RSpec.describe Service, type: :model do
 
   context 'service model validations' do
     it { should validate_presence_of(:name)}
-    it { should validate_presence_of(:type)}
     it { should validate_presence_of(:package)}
+    it { should validate_presence_of(:bundle)}
+    it { should validate_presence_of(:category)}
     it { should validate_presence_of(:max_time)}
     it { should validate_presence_of(:pkg_amount)}
     it { should validate_presence_of(:hourly_rate)}

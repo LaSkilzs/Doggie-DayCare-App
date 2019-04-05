@@ -4,8 +4,8 @@ FactoryBot.define do
     age { 1 }
     breed { "MyString" }
     size { "MyString" }
-    restrictions { "MyString" }
-    friendliness { "MyString" }
+    restrictions { "dogfood" }
+    friendliness { "friendly" }
     image { "MyString" }
     owner 
   end

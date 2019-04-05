@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_152814) do
+ActiveRecord::Schema.define(version: 2019_04_05_174246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,13 +69,14 @@ ActiveRecord::Schema.define(version: 2019_04_05_152814) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.string "type"
     t.string "package"
+    t.string "bundle"
     t.string "max_time"
     t.float "pkg_amount"
     t.float "hourly_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_152814) do
   create_table "walkers", force: :cascade do |t|
     t.integer "age"
     t.string "experience"
-    t.boolean "own_dog"
+    t.boolean "own_dog", default: false
     t.integer "rating"
     t.bigint "user_id"
     t.datetime "created_at", null: false

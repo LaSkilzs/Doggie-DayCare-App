@@ -7,7 +7,6 @@ RSpec.describe Walker, type: :model do
  context 'walker model validations' do
   it {should validate_presence_of(:age) }
   it {should validate_presence_of(:experience) }
-  it {should validate_presence_of(:own_dog) }
   it {should validate_presence_of(:rating) }
  end
  context 'walker model format' do
