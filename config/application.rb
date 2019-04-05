@@ -11,6 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require "capybara/rspec"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -26,6 +27,17 @@ module Doggie
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    # Settings in config/environments/* take precedence over those specified here.
+    config.generators do |g|
+      g.test_framework :rspec,
+      :fixtures => true,
+      :views_specs => false,
+      :helper_specs => true,
+      :routing_specs => true,
+      :controller_specs => true,
+      :request_specs => true
+      g.fixture_replacement :factory_bot, :dir => "spec/factories" 
+    end
 
     # Don't generate system test files.
     config.generators.system_tests = nil
