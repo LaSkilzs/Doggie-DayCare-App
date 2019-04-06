@@ -71,30 +71,28 @@ puts("10 walker")
 @walker_ids = Walker.pluck(:id)
 @comments = ["Great Walk, would definitly use this walker again", "Walker was late and left my door unlocked", "Okay", "Excellent", "Satisfactory", "Horrible, walker should be fired"]
 
-
-
 #walking
-  Service.create!(name: "walking", bundle: 5, category: "package", package: "standard", max_time: 15, pkg_amount: 35.00, hourly_rate: 7.00)
-  Service.create!(name: "walking", bundle: 5, category: "package", package: "best", max_time: 30, pkg_amount: 49.00, hourly_rate: 9.80)
-  
-  Service.create!(name: "walking", bundle: 5, category: "package", package: "premium", max_time: 60, pkg_amount: 70.00, hourly_rate: 14.00)
+  Service.create!(name: "walking", bundle: "five", category: "package", package: "standard", max_time: "quarter", pkg_amount: 35.00, hourly_rate: 7.00)
+  Service.create!(name: "walking", bundle: "fifteen", category: "package", package: "best", max_time: "half", pkg_amount: 70.00, hourly_rate: 7.00)
+  Service.create!(name: "walking", bundle: "thirty", category: "package", package: "premium", max_time: "hour", pkg_amount: 105.00, hourly_rate: 7.00)
  puts("service walking")
 #daycare 1/2 day
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "standard", max_time: 12, pkg_amount: 180.00, hourly_rate: 18.00)
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "best", max_time: 12, pkg_amount: 225.00, hourly_rate: 18.00)
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "premium", max_time: 12, pkg_amount: 550.00, hourly_rate: 18.00)
+   Service.create!(name: "daycare", bundle: "five", category: "package", package: "best", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 18.00)
+   Service.create!(name: "daycare", bundle: "fifteen", category: "package", package: "premium", max_time: "halfday", pkg_amount: 900.00, hourly_rate: 180.00)
+   Service.create!(name: "daycare", bundle: "thirty", category: "package", package: "premium", max_time: "halfday", pkg_amount: 1350.00, hourly_rate: 270.00)
     puts("1/2 daycare")
 #daycare full day
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "standard", max_time: 24, pkg_amount: 300.00, hourly_rate: 30.00)
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "best", max_time: 24, pkg_amount:450.00, hourly_rate: 30.00)
-   Service.create!(name: "daycare", bundle: 1, category: "package", package: "premium", max_time: 24, pkg_amount: 900.00, hourly_rate: 30.00)
+   Service.create!(name: "daycare", bundle: "five", category: "package", package: "best", max_time: "fullday", pkg_amount: 150.00, hourly_rate: 30.00)
+   Service.create!(name: "daycare", bundle: "fifteen", category: "package", package: "premium", max_time: "fullday", pkg_amount: 900.00, hourly_rate: 300.00)
+   Service.create!(name: "daycare", bundle: "thirty", category: "package", package: "premium", max_time: "fullday", pkg_amount: 1280.00, hourly_rate: 450.00)
     puts("full daycare")
 #inhome
-  Service.create!(name: "inhome", bundle: 1, category: "rate", package: "standard", max_time: 12, pkg_amount: 144.00, hourly_rate: 12.00)
+  Service.create!(name: "inhome", bundle: "one", category: "rate", package: "standard", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 12.00)
    puts("service inhome")
 #overnight
-  Service.create!(name: "inhome", bundle: 1, category: "rate", package: "standard", max_time: 12, pkg_amount: 180.00, hourly_rate: 15.00)
+  Service.create!(name: "overnight", bundle: "one", category: "rate", package: "standard", max_time: "halfday", pkg_amount: 120.00, hourly_rate: 15.00)
    puts("service overnight")
+   
 
 @service = Service.pluck(:id)
 
