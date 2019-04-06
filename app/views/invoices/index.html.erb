@@ -1,7 +1,8 @@
 <h1>All Invoices</h1>
 <ol>
 <% @invoices.each do |invoice| %>
-<li> <%=link_to invoice.user.name, invoice_path(invoice) %></li>
+<li> <%=link_to invoice.amount, invoice_path(invoice) %></li>
+<li> <%=link_to invoice.walked, invoice_path(invoice) %></li>
 <br>
 <% end %>
 </ol>

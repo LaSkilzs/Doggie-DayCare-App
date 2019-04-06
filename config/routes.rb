@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  get 'pages/service'
+  get 'pages/checkout'
   get 'pages/contact'
  resources :owners
  resources :users

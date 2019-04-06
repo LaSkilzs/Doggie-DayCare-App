@@ -1,3 +1,13 @@
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+
 <%= form_for @dog, url: @dogs_path do |f| %>
 <p>
   <%= f.label :name %> 

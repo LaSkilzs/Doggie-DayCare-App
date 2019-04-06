@@ -10,9 +10,14 @@ class DogsController < ApplicationController
   end
 
   def create
-  flash[:notice] = "dog was created"
-  @dog = Dog.create(dog_params)
-  redirect_to @dog
+    flash[:notice] = "dog was created"
+    @dog = Dog.create(dog_params)
+  if @dog.save
+      redirect_to @dog
+    else
+      # @errors = @dog.errors.full_message
+      render :new
+    end
   end
 
   def show
@@ -22,8 +27,13 @@ class DogsController < ApplicationController
   end
 
   def update
-    @dog.update(dog_params)
-    redirect_to @dog
+    if @dog.update_attributes(dog_params)
+      flash[:notice] = "dog was created"
+      redirect_to @dog
+    else
+      # @errors = @dog.errors.full_message
+      render :edit
+    end
   end
 
   def destroy

@@ -1,7 +1,9 @@
 <h1>All Appointments</h1>
 <ol>
 <% @appointments.each do |appointment| %>
-<li> <%=link_to appointment.user.name, appointment_path(appointment) %></li>
+<li> <%=link_to appointment.date, appointment_path(appointment) %></li>
+<li> <%=link_to appointment.start_time%></li>
+<li> <%=link_to appointment.status %></li>
 <br>
 <% end %>
 </ol>

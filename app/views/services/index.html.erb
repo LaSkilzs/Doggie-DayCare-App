@@ -1,7 +1,7 @@
 <h1>All Services</h1>
 <ol>
 <% @services.each do |service| %>
-<li> <%=link_to service.user.name, service_path(service) %></li>
+<li> <%=link_to service.name, service_path(service) %></li>
 <br>
 <% end %>
 </ol>

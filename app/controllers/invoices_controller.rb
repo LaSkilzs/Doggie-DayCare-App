@@ -10,9 +10,14 @@ class InvoicesController < ApplicationController
   end
 
   def create
-  flash[:notice] = "invoice was created"
   @invoice = Invoice.create(invoice_params)
-  redirect_to @invoice
+  if @invoice.save
+      flash[:notice] = "invoice was created"
+      redirect_to @invoice
+    else
+      # @errors = @invoice.errors.full_message
+      render :new
+    end
   end
 
   def show
@@ -22,8 +27,13 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    @invoice.update(invoice_params)
-    redirect_to @invoice
+    if @invoice.upate_attributes(invoice_params)
+      flash[:notice] = "appointment was created"
+      redirect_to @invoice
+    else
+      @errors = @invoice.errors.full_message
+      render :edit
+    end
   end
 
   def destroy
