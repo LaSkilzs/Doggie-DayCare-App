@@ -1,0 +1,13 @@
+<h1><%= @invoice.user.name%></h1>
+
+<div>amount: <%= @invoice.amount%></div>
+<div>walked: <%= @invoice.walked%></div>
+<div>walk_rating: <%= @invoice.walk_rating%></div>
+<div>notes: <%= @invoice.notes%></div>
+<div>owner_comments: <%= @invoice.owner_comments%></div>
+<div>walker_comments: <%= @invoice.walker_comments%></div>
+<div>appointment_id: <%= @invoice.appointment_id%></div>
+<br>
+<br>
+
+<%= link_to "back", invoices_path %> | <%= link_to "edit", edit_invoice_path(@invoice) %> 

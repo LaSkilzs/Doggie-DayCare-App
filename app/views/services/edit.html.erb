@@ -1,0 +1,6 @@
+<h1 class="title"> Edit Service</h1>
+<%= render "service_form"  %>
+
+<%= form_tag @service, method: "DELETE" do %>
+  <%= submit_tag "Delete this Service"%>
+  <% end %>

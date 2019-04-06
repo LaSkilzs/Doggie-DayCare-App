@@ -1,0 +1,9 @@
+<h1>All Invoices</h1>
+<ol>
+<% @invoices.each do |invoice| %>
+<li> <%=link_to invoice.user.name, invoice_path(invoice) %></li>
+<br>
+<% end %>
+</ol>
+
+<%= link_to "Create a Invoice", new_invoice_path%>

@@ -1,0 +1,9 @@
+<h1>All Dogs</h1>
+<ol>
+<% @dogs.each do |dog| %>
+<li> <%=link_to dog.user.name, dog_path(dog) %></li>
+<br>
+<% end %>
+</ol>
+
+<%= link_to "Create a Dog", new_dog_path%>

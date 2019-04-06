@@ -1,0 +1,6 @@
+<h1 class="title"> Edit Walker</h1>
+<%= render "walker_form"  %>
+
+<%= form_tag @walker, method: "DELETE" do %>
+  <%= submit_tag "Delete this Walker"%>
+  <% end %>

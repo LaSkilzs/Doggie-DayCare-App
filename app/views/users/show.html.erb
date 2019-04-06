@@ -1,0 +1,9 @@
+<h1><%= @user.name%></h1>
+
+<div>Address: <%= @user.username%></div>
+<div>City: <%= @user.email%></div>
+
+<br>
+<br>
+
+<%= link_to "back", users_path %> | <%= link_to "edit", edit_user_path(@user) %> 

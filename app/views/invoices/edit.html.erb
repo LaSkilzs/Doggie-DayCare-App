@@ -1,0 +1,6 @@
+<h1 class="title"> Edit Invoice</h1>
+<%= render "invoice_form"  %>
+
+<%= form_tag @invoice, method: "DELETE" do %>
+  <%= submit_tag "Delete this Invoice"%>
+  <% end %>
