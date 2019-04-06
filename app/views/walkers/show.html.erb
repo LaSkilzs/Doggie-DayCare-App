@@ -1,0 +1,11 @@
+<h1><%= @walker.user.name%></h1>
+
+<div>Age: <%= @walker.age%></div>
+<div>Experience: <%= @walker.experience%></div>
+<div>Own Dogs?: <%= @walker.own_dog%></div>
+<div>Rating: <%= @walker.rating%></div>
+
+<br>
+<br>
+
+<%= link_to "back", walkers_path %> | <%= link_to "edit", edit_walker_path(@walker) %> 

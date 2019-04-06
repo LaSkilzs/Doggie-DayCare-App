@@ -1,0 +1,9 @@
+<h1>All Walkers</h1>
+<ol>
+<% @walkers.each do |walker| %>
+<li> <%=link_to walker.user.name, walker_path(walker) %></li>
+<br>
+<% end %>
+</ol>
+
+<%= link_to "Create a Walker", new_walker_path%>

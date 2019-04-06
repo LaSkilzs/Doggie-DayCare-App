@@ -1,0 +1,9 @@
+<h1><%= @owner.user.name%></h1>
+
+<div>Address: <%= @owner.address%></div>
+<div>City: <%= @owner.city%></div>
+
+<br>
+<br>
+
+<%= link_to "back", owners_path %> | <%= link_to "edit", edit_owner_path(@owner) %> 

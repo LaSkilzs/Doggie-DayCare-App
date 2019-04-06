@@ -1,0 +1,6 @@
+<h1 class="title"> Edit Dog</h1>
+<%= render "dog_form"  %>
+
+<%= form_tag @dog, method: "DELETE" do %>
+  <%= submit_tag "Delete this Dog"%>
+  <% end %>

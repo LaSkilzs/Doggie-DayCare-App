@@ -1,0 +1,9 @@
+<h1>All Owners</h1>
+<ol>
+<% @owners.each do |owner| %>
+<li> <%=link_to owner.user.name, owner_path(owner) %></li>
+<br>
+<% end %>
+</ol>
+
+<%= link_to "Create a Owner", new_owner_path%>

@@ -1,0 +1,13 @@
+<h1><%= @appointment.user.name%></h1>
+
+<div>date: <%= @appointment.date%></div>
+<div>start_time: <%= @appointment.start_time%></div>
+<div>status: <%= @appointment.status%></div>
+<div>dog_id: <%= @appointment.dog.name%></div>
+<div>walkder_id: <%= @appointment.walker.user.name%></div>
+<div>services_id: <%= @appointment.service.name%></div>
+
+<br>
+<br>
+
+<%= link_to "back", appointments_path %> | <%= link_to "edit", edit_appointment_path(@appointment) %> 

@@ -13,25 +13,25 @@ RSpec.describe OwnersController, type: :controller do
 
     context 'GET #show' do
       let!(:owner) { create :owner}
-      it 'should succeessfully render an edit page' do
+      it 'should succeessfully render an showpage' do
       get :show, params: { id: owner.id }
       expect(response).to have_http_status(200)
-      expect(response).to render_template :edit
+      expect(response).to render_template :show
     end
   end
 
+    describe 'POST #create' do
+      context 'with valid parameters' do
+      let!(:owner) {FactoryBot.create :owner}
+      let!(:valid_params) do 
+        { address: owner.address, city: owner.city, user_id: owner.user_id}
+      end
 
-    context 'POST #create' do
-      let!(:owner) { FactoryBot.create :owner}
-
-      it 'create a new owner' do
-        params = {
-          address: "178 Houston Rd",
-          city: "Orange"
-        }
+      it 'creates new owner' do
+      expect { post(:create, params: { owner: valid_params}) }.to change(Owner, :count).by(1)
+      expect(flash[:notice]).to eq "Owner was created"
       
-      expect { post(:create, params: {owner: params})}.to change(Owner, :count).by(1)
-      expect(flash[notice]).to eq 'Owner was successfully created.'
+      end
     end
   end
 
@@ -46,11 +46,10 @@ RSpec.describe OwnersController, type: :controller do
       put :update, params: {id: owner.id, owner: params}
       owner.reload
       params.keys.each do |key|
-        expect(owner.attributes[key.to_s].to eq params[key])
+        expect(owner.attributes[key.to_s]).to eq(params[key])
       end
     end
   end
-
 
     context 'DELETE #destroy' do
       let!(:owner) { create :owner}
@@ -60,6 +59,34 @@ RSpec.describe OwnersController, type: :controller do
     end
   end
 
+  context 'Routing' do 
+    it 'routes to #index' do
+    expect(get: '/owners').to route_to('owners#index')
+    end
+
+    it 'routes to #show' do
+    expect(get: '/owners/1').to route_to('owners#show', id: '1')
+    end
+
+    it 'routes to #new' do
+    expect(get: '/owners/new').to route_to('owners#new')
+    end
+    
+    it 'routes to #create' do
+    expect(post: '/owners').to route_to('owners#create')
+    end
+  
+    it 'routes to #update via PUT' do
+    expect(put: '/owners/1').to route_to('owners#update', id: '1')
+    end
+    
+    it 'routes to #destroy via DELETE' do
+    expect(delete: '/owners/1').to route_to('owners#destroy', id: '1')
+    end
+  end
+
 
 end
 end
+
+
