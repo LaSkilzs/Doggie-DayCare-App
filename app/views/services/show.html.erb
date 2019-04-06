@@ -1,9 +1,9 @@
-<h1><%= @owner.user.name%></h1>
+<h1><%= @service.user.name%></h1>
 
-<div>Address: <%= @owner.address%></div>
-<div>City: <%= @owner.city%></div>
+<div>Address: <%= @service.address%></div>
+<div>City: <%= @service.city%></div>
 
 <br>
 <br>
 
-<%= link_to "back", owners_path %> | <%= link_to "edit", edit_owner_path(@owner) %> 
+<%= link_to "back", services_path %> | <%= link_to "edit", edit_service_path(@service) %> 
