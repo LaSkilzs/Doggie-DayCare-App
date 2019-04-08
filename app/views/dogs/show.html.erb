@@ -1,4 +1,4 @@
-<h1><%= @dog.user.name%></h1>
+<h1><%= @dog.name%></h1>
 
 <div>name: <%= @dog.name%></div>
 <div>age: <%= @dog.age%></div>
@@ -6,8 +6,8 @@
 <div>size: <%= @dog.size%></div>
 <div>restrictions: <%= @dog.restrictions%></div>
 <div>friendliness: <%= @dog.friendliness%></div>
-<div>image: <%= @dog.image%></div>
-<div>owner_name <%= @dog.owner.user.name%></div>
+<div class="show-dog"><img src=<%= @dog.image%> alt="dog"></div>
+<div>owner_name: <%= @dog.owner.user.name%></div>
 
 
 <br>

@@ -1,11 +1,28 @@
 <h1>All Appointments</h1>
-<ol>
-<% @appointments.each do |appointment| %>
-<li> <%=link_to appointment.date, appointment_path(appointment) %></li>
-<li> <%=link_to appointment.start_time%></li>
-<li> <%=link_to appointment.status %></li>
-<br>
-<% end %>
-</ol>
-
+<div class="cars-horizon">
+<div class="container">
+<%@appointments.each do|appointment|%>
+<div class="row border">
+  <div class="col-md-4 car-image-block">
+    <img src=<%=appointment.dog.image%> alt="pic">
+  </div>
+  <div class="col-md-8 card-body ">
+    <h3><%=appointment.dog.name%></h3> 
+    <h5><%=appointment.service.name%></h5>
+    <ul class="list-inline">
+      <li class="list-inline-item"><%=appointment.date%></li>
+      <li class="list-inline-item"><%=appointment.status%></li>
+      <li class="list-inline-item"><%=appointment.start_time%></li>
+    </ul>
+    <button type="button" class="btn btn-outline-danger"><%=link_to 'Book Today', edit_appointment_path(appointment)%></button>
+  </div>
+</div>
+<%end%>
+  </div>
+</div>
 <%= link_to "Create a Appointment", new_appointment_path%>
+
+
+       
+   
+

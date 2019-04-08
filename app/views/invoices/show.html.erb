@@ -1,13 +1,54 @@
-<h1><%= @invoice.user.name%></h1>
-
-<div>amount: <%= @invoice.amount%></div>
-<div>walked: <%= @invoice.walked%></div>
-<div>walk_rating: <%= @invoice.walk_rating%></div>
-<div>notes: <%= @invoice.notes%></div>
-<div>owner_comments: <%= @invoice.owner_comments%></div>
-<div>walker_comments: <%= @invoice.walker_comments%></div>
-<div>appointment_id: <%= @invoice.appointment_id%></div>
-<br>
-<br>
+<div class="invoice-container">
+<h1>Individual Invoice</h1>
+	<table class="body-wrap">
+		<tr>
+			<td></td>
+			<td class="container" width="600">
+				<div class="content">
+					<table class="main" width="100%" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="content-wrap">
+								<table width="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="content-block" style="text-align:center;">
+											<img src="http://api.harryward.biz/aZQB/gpoollogo.png" width="300px">
+											<h3>Name of Dog Invoice</h3> 
+											<h4>Type of Service</h4> 
+										</td>
+									</tr>
+									<tr style="text-align:center">
+										<td class="content-block"></td>
+									</tr>
+                  <div></div>
+                  <tr style="text-align:center">
+            			  <td class="content-block">amount: <%= @invoice.amount%></td>
+									</tr>
+                  <tr style="text-align:center">
+    									<td class="content-block">walked: <%= @invoice.walked%></td>
+									</tr>
+                  <tr style="text-align:center">
+            				  <td class="content-block"><%= @invoice.walk_rating%></td>
+									</tr>
+                  <tr style="text-align:center">
+        							<td class="content-block">notes: <%= @invoice.notes%></td>
+									</tr>
+                  <tr style="text-align:center">
+        							<td class="content-block"><%= @invoice.owner_comments%></td>
+									</tr>
+                  <tr style="text-align:center">
+        							<td class="content-block"><%= @invoice.walker_comments%></td>
+									</tr>
+									<tr style="text-align:center;">
+										<td class="content-block"> <a class="btn-primary" href="http://guidepool.io">Comment</a> 
+										</td>
+									</tr>
+									<tr>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+  </div>
 
 <%= link_to "back", invoices_path %> | <%= link_to "edit", edit_invoice_path(@invoice) %> 
+	

@@ -1,9 +1,27 @@
-<h1>All Owners</h1>
-<ol>
+<h1>All owners</h1>
+<div class="row">
+<div class="card-deck">
 <% @owners.each do |owner| %>
-<li> <%=link_to owner.user.name, owner_path(owner) %></li>
-<br>
+<div class="col-md-4">
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src=<%= owner.image %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%=link_to owner.user.name, owner_path(owner) %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Street: <%= owner.address %>  </li>
+    <li class="list-group-item">City: <%= owner.city %>  </li>
+  </ul>
+  <div class="card-body">
+  <%=link_to "view", owner_path(owner), class: "card-link" %>
+  <%=link_to "pets", owner_path(owner), class: "card-link" %>
+  </div>
+</div>
+</div>
 <% end %>
-</ol>
+</div>
+</div>
+
 
 <%= link_to "Create a Owner", new_owner_path%>
+

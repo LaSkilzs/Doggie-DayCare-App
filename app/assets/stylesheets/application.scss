@@ -1,19 +1,28 @@
 @import "bootstrap";
+/*
+ * Globals
+ */
 
+/* Links */
 a,
 a:focus,
 a:hover {
   color: #fff;
 }
 
+/* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
   color: #333;
-  text-shadow: none;
+  text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
   border: 0.05rem solid #fff;
 }
+
+/*
+ * Base structure
+ */
 
 html,
 body {
@@ -28,15 +37,20 @@ body {
   -ms-flex-pack: center;
   -webkit-box-pack: center;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   color: #fff;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 75em;
 }
 
+/*
+ * Header
+ */
 .masthead {
   margin-bottom: 2rem;
 }
@@ -92,4 +106,56 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.card-img-top {
+  height: 285px;
+}
+
+.card-deck .card {
+  margin-bottom: 15px;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: center;
+  width: 85vw;
+  margin-right: 150px;
+  align-items: center;
+}
+
+.invoice-container {
+  height: 75vh;
+}
+
+.appt {
+  display: flex;
+  height: 20vh;
+  width: 20vw;
+  justify-content: space-between;
+}
+
+.apptcards {
+  display: flex;
+  height: 20vh;
+  width: 20vw;
+}
+
+.moving {
+  margin: 0 auto;
+  width: 100vw;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  margin: 2px;
+}
+.car-image-block img {
+  width: 15rem;
+}
+
+.show-dog img {
+  width: 300px;
 }

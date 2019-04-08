@@ -8,20 +8,30 @@
   </div>
 <%end%>
 
-<%= form_for @walkers_path, url: @walkers_paths_path do |f| %>
-<p>
-  <%= f.label :address %> 
-  <%= f.text_field :address%>
-</p>
-<p>
-  <%= f.label :city %> 
-  <%= f.text_field :city%>
-</p>
-<p>
-  <%= f.label :current_user %> 
-  <%= f.text_field :user_id%>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
+<form>
+<%= form_for @walker, url: @walkers_path do |f| %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+       <%= f.label :age %> 
+       <%= f.text_field :age, class: "form-control", placeholder: "age"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :experience %> 
+       <%= f.text_field :experience, class: "form-control", placeholder: "experience"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :own_dog %> 
+       <%= f.text_field :own_dog, class: "form-control", placeholder: "own_dog"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :rating %> 
+       <%= f.text_field :rating, class: "form-control", placeholder: "rating"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :user_id %> 
+       <%= f.text_field :user_id, class: "form-control", placeholder: "user_id"%>
+    </div>
+   </div>
+   <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+</form>

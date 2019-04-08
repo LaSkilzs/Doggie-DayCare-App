@@ -1,4 +1,31 @@
 <h1>All Walkers</h1>
+<div class="row">
+<div class="card-deck">
+<% @walkers.each do |walker| %>
+<div class="col-md-4">
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src=<%= walker.image %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= walker.user.name %> </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Experience: <%= walker.experience %>  </li>
+    <li class="list-group-item">own_dogs?: <%= walker.own_dog %>  </li>
+    <li class="list-group-item">rating: <%= walker.rating %>  </li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">view</a>
+    <a href="#" class="card-link">book</a>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
+
+<%= link_to "Create a Dog", new_dog_path%>
+
 <ol>
 <% @walkers.each do |walker| %>
 <li> <%=link_to walker.user.name, walker_path(walker) %></li>

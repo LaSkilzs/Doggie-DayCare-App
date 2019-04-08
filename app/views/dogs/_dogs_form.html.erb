@@ -8,40 +8,42 @@
   </div>
 <%end%>
 
+<form>
 <%= form_for @dog, url: @dogs_path do |f| %>
-<p>
-  <%= f.label :name %> 
-  <%= f.text_field :name%>
-</p>
-<p>
-  <%= f.label :age%> 
-  <%= f.text_field :age%>
-</p>
-<p>
-  <%= f.label :breed %> 
-  <%= f.text_field :breed%>
-</p>
-<p>
-  <%= f.label :size %> 
-  <%= f.text_field :size%>
-</p>
-<p>
-  <%= f.label :restrictions %> 
-  <%= f.text_field :restrictions%>
-</p>
-<p>
-  <%= f.label :friendliness %> 
-  <%= f.text_field :friendliness%>
-</p>
-<p>
-  <%= f.label :image %> 
-  <%= f.text_field :image%>
-</p>
-<p>
-  <%= f.label :owner_id %> 
-  <%= f.text_field :owner_id%>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+       <%= f.label :name %> 
+       <%= f.text_field :name, class: "form-control", placeholder: "name"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :age %> 
+       <%= f.text_field :age, class: "form-control", placeholder: "age"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :breed %> 
+       <%= f.text_field :breed, class: "form-control", placeholder: "breed"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :size %> 
+       <%= f.text_field :size, class: "form-control", placeholder: "size"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :restrictions %> 
+       <%= f.text_field :restrictions, class: "form-control", placeholder: "restrictions"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :friendliness %> 
+       <%= f.text_field :friendliness, class: "form-control", placeholder: "friendliness"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :image %> 
+       <%= f.text_field :image, class: "form-control", placeholder: "image"%>
+    </div>
+    <div class="form-group col-md-6">
+       <%= f.label :owner_id %> 
+       <%= f.text_field :owner_id, class: "form-control", placeholder: "owner"%>
+    </div>
+   </div>
+   <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+</form>

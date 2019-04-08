@@ -1,9 +1,30 @@
 <h1>All Dogs</h1>
-<ol>
+<div class="row">
+<div class="card-deck">
 <% @dogs.each do |dog| %>
-<li> <%=link_to dog.name, dog_path(dog) %></li>
-<br>
+<div class="col-md-4">
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src=<%= dog.image %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= dog.name %> </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Age: <%= dog.age %>  </li>
+    <li class="list-group-item">Breed: <%= dog.breed %>  </li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link"><%= link_to "view", dog_path(dog)%></a>
+    <a href="#" class="card-link"><%= link_to "confirm", invoices_path%></a>
+  </div>
+</div>
+</div>
 <% end %>
-</ol>
+</div>
+</div>
+
 
 <%= link_to "Create a Dog", new_dog_path%>
+
+
+
+
