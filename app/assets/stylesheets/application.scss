@@ -1,112 +1,12 @@
 @import "bootstrap";
-/*
- * Globals
- */
-
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: 0.05rem solid #fff;
-}
-
-/*
- * Base structure
- */
-
-html,
-body {
-  height: 100%;
-  background-color: #333;
-}
-
-body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-pack: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  color: #fff;
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
-}
-
-.cover-container {
-  max-width: 75em;
-}
-
-/*
- * Header
- */
-.masthead {
-  margin-bottom: 2rem;
-}
-
-.masthead-brand {
-  margin-bottom: 0;
-}
-
-.nav-masthead .nav-link {
-  padding: 0.25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: transparent;
-  border-bottom: 0.25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: 0.75rem 1.25rem;
-  font-weight: 700;
-}
-
-/*
- * Footer
- */
-.mastfoot {
-  color: rgba(255, 255, 255, 0.5);
-}
+@import "./appointments.scss";
+@import "./dogs.scss";
+@import "./invoices.scss";
+@import "./owners.scss";
+@import "./pages.scss";
+@import "./services.scss";
+@import "./users.scss";
+@import "./walkers.scss";
 
 .card-img-top {
   height: 285px;
@@ -122,10 +22,6 @@ body {
   width: 85vw;
   margin-right: 150px;
   align-items: center;
-}
-
-.invoice-container {
-  height: 75vh;
 }
 
 .appt {
@@ -158,4 +54,79 @@ body {
 
 .show-dog img {
   width: 300px;
+}
+
+.dog-image {
+  width: 330px;
+  height: 330px;
+}
+
+.firma-aciklama {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yacht-info__list {
+  list-style-type: none;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+/*----------------------
+Product Card Styles 
+----------------------*/
+.panel.panel--styled {
+  background: #f4f2f3;
+}
+.panelTop {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  padding: 20px;
+}
+
+.panelBottom {
+  justify-content: space-around;
+  display: flex;
+  padding: 25px;
+  border-top: 1px solid #e7e7e7;
+  padding-top: 20px;
+}
+.btn-add-to-cart {
+  background: #fd5a5b;
+  color: #fff;
+}
+.btn.btn-add-to-cart.focus,
+.btn.btn-add-to-cart:focus,
+.btn.btn-add-to-cart:hover {
+  color: #fff;
+  background: #fd7172;
+  outline: none;
+}
+.btn-add-to-cart:active {
+  background: #f9494b;
+  outline: none;
+}
+
+span.itemPrice {
+  font-size: 24px;
+  color: #fa5b58;
+}
+
+.card-header {
+  width: 70vw;
+  text-align: left;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.content-list {
+  list-style-type: none;
+  padding: 50px;
 }

@@ -1,36 +1,30 @@
-<h1>All Walkers</h1>
-<div class="row">
-<div class="card-deck">
-<% @walkers.each do |walker| %>
-<div class="col-md-4">
-<div class="card" style="width: 25rem;">
-  <img class="card-img-top" src=<%= walker.image %> alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= walker.user.name %> </h5>
+
+<section id="walkers">
+  <div class="walk-head">
+    <h1 class="display-3">All Walkers</h1>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Experience: <%= walker.experience %>  </li>
-    <li class="list-group-item">own_dogs?: <%= walker.own_dog %>  </li>
-    <li class="list-group-item">rating: <%= walker.rating %>  </li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">view</a>
-    <a href="#" class="card-link">book</a>
+  <div class="row">
+  <div class="card-deck">
+    <% @walkers.each do |walker| %>
+      <div class="col-md-4">
+        <div class="card" style="width: 25rem;">
+          <img class="card-img-top" src=<%= walker.image %> alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title"><%= walker.user.name %> </h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> <strong>EXPERIENCE:</strong> <%= walker.experience %>  </li>
+              <li class="list-group-item"><strong>OWN_DOGS?: </strong><%= walker.own_dog %>  </li>
+              <li class="list-group-item"><strong>SERVICE RATING: </strong><%= walker.rating %>  </li>
+            </ul>
+            <div class="card-body">
+              <button type="button" class="btn btn-outline-secondary "><%= link_to "view", walker_path(walker)%></button>   |   <button type="button" class="btn btn-outline-secondary"><%= link_to "edit", edit_walker_path(walker)%></a>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-</div>
-</div>
-<% end %>
-</div>
-</div>
+</section>
 
 
-<%= link_to "Create a Dog", new_dog_path%>
-
-<ol>
-<% @walkers.each do |walker| %>
-<li> <%=link_to walker.user.name, walker_path(walker) %></li>
-<br>
-<% end %>
-</ol>
-
-<%= link_to "Create a Walker", new_walker_path%>

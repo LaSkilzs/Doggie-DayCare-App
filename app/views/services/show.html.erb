@@ -1,92 +1,32 @@
+<div class="container">    
+		<div class="row panel panel--styled">			
+					<div class="col-md-12 panelTop">	
+						<div class="col-md-4">	
+						  <img class="img-responsive dog-image" src=<%= @service.image%> alt=""/>
+						</div>
+						<div class="col-md-8">	
+						  <h2><%=@service.name%></h2>
+							<p>Lorem ipsum dolor sit amet, altera propriae iudicabit eos ne. Vel ut accusam tacimates, prima oratio ius ea. Et duo alii verterem principes, te quo putent melius fabulas, ei scripta eligendi appareat duo.</p>
+							</div>
+					</div>
+					<div class="col-md-12 panelBottom">
+						<div class="col-md-4 text-center">
+							<button class="btn btn-lg btn-add-to-cart"><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart</button>						
+						</div>
+						<div class="col-md-4 text-left">
+							<h5>Price <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
+						</div>
+						<div class="col-md-4">
+							<div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+							</div>
+						</div>
+					</div>
+				</div>
 
-
-<div id="invoice">
-  <div class="toolbar hidden-print">
-    <div class="text-right">
-      <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Email</button>
-      <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Print</button>
-        </div>
-        <hr>
-    </div>
-  <div class="invoice overflow-auto">
-    <div style="min-width: 600px">
-      <header>
-        <div class="row">
-         
-          <div class="col company-details">
-            <h2 class="name">
-            <a target="_blank" href="https://lobianijs.com">Sniff Scratch N' Shake</a>
-            </h2>
-            <div>sniffscratchnshke@example.com</div>
-          </div>
-        </div>
-      </header>
-    <main>
-     <div class="row contacts">
-      <div class="col invoice-to">
-       <div class="text-gray-light">INVOICE TO:</div>
-        <h2 class="to">Current User Name</h2>
-         <div class="address">Address</div>
-           <div class="email"><a href="mailto:john@example.com">Email</a></div>
-           </div>
-        <div class="col invoice-details">
-          <h1 class="invoice-id">INVOICE id</h1>
-          <div class="date">Date of Invoice: <%=Date.today()%></div>
-          <div class="date">Due Date: <%=Date.tomorrow()%></div>
-        </div>
-      </div>
-      <table border="0" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <th>#</th>
-              <th class="text-left">SERVICE NAME</th>
-              <th class="text-right">PACKAGE</th>
-              <th class="text-right">BUNDLE</th>
-              <th class="text-right">AMOUNT</th>
-          </tr>
-        </thead>
-          <tbody>
-            <tr>
-              <td class="no">1</td>
-              <td class="text-left"><h3><%= @service.name%></h3>
-              <p>Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget.</p>
-              </td>
-              <td class="unit"><%= @service.package%></td>
-              <td class="qty"><%= @service.bundle%></td>
-              <td class="total"><%= @service.pkg_amount%></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">SUBTOTAL</td>
-              <td>$5,200.00</td>
-            </tr>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">TAX 25%</td>
-              <td>$1,300.00</td>
-            </tr>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">GRAND TOTAL</td>
-              <td>$6,500.00</td>
-            </tr>
-          </tfoot>
-        </table>
-    <div class="thanks">Thank you!</div>
-    <div class="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-    </div>
-  </main>
-  <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
-  </footer>
-</div>
-<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
-<div></div>
-    </div>
-</div>
 
 <%= link_to "back", services_path %> | <%= link_to "edit", edit_service_path(@service) %> 
