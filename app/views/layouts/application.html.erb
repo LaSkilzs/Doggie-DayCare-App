@@ -13,11 +13,11 @@
 
  <body class="text-center">
     <div class="d-flex h-100 p-3 mx-auto flex-column">
-    <%= render "shared/nav_shared"  %>
-    <%= yield %>
-     <%= render "shared/footer_shared"%>
-   
-    </div>
-     
+      <%= render "shared/nav_shared"  %>
+        <div class="main-container">
+          <%= yield %>
+        </div>
+          <%= render "shared/footer_shared"%>
+    </div>   
   </body>
 </html>

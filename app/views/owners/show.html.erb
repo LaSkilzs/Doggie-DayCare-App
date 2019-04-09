@@ -3,7 +3,18 @@
 <div>Address: <%= @owner.address%></div>
 <div>City: <%= @owner.city%></div>
 
+<div class="card" style="width: 18rem;">
+  <img src=<%= @owner.image%> class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-text">Furry Friends </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+  <% @owner.dogs.each do |dog| %>
+    <li class="list-group-item"><%= link_to dog.name, dog_path(dog) %></li>
+    <% end %>
+  </ul>
+</div>
 <br>
 <br>
 
-<%= link_to "back", owners_path %> | <%= link_to "edit", edit_owner_path(@owner) %> 
+<p><%= link_to "back", owners_path %>   |  <%= link_to "edit", edit_owner_path(@owner) %> </p>

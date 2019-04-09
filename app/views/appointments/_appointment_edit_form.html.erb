@@ -1,0 +1,62 @@
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Book Your Appointment Today</legend>
+<!-- Text input-->
+<%= form_for @appointment, url: @appointments_path do |f| %>
+<div class="control-group">
+  <%= f.label :date, class: "control-label" %> 
+  <%= f.date_field :date, class:"form-control input-md", name: 'date', placeholder: 'date' %>
+</div>
+<div class="control-group">
+  <%= f.label :start_time, class: "control-label" %> 
+  <%= f.time_field :start_time, class:"form-control input-md", name: 'time', placeholder: 'time' %>
+</div>
+
+<div class="control-group">
+  <%= f.label :status, class: "control-label" %> 
+  <%= f.label :status, class: "control-label" %> 
+    <select name="status" class="form-control">
+      <option value="pending">pending</option>
+      <option value="cancelled">cancelled</option>
+      <option value="confirmed">confirmed</option>
+      <option value="completed">completed</option>
+    </select>
+</div>
+<br>
+<div class="control-group">
+  <%= f.label :services, class: "control-label" %> 
+  <%= f.collection_select(:service_id, Service.all, :id, :name, {class: "form-control"}, {placeholder: "choose services"})%>    
+</div>
+
+<div class="control-group">
+  <%= f.label :walker, class: "control-label" %> 
+  <%= f.collection_select(:walker_id, Walker.all, :id, :id, {class: "form-control"}, {placeholder: "choose services"})%>    
+</div>
+
+
+<!-- Text input-->
+<div class="control-group">
+  <%= f.label :pet, class: "control-label" %> 
+  <%= f.text_field :dog_id, class:"form-control input-md", name: 'dog_id', placeholder: 'pet name'%>
+</div>
+<br>
+<%=f.submit 'Book Now', class: 'btn btn-primary'%>
+<% end %>
+</form>
+
+
+
+
+
+

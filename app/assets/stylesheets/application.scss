@@ -8,6 +8,16 @@
 @import "./users.scss";
 @import "./walkers.scss";
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: white;
+  height: 100vh;
+}
+
 .card-img-top {
   height: 285px;
 }
@@ -129,4 +139,8 @@ span.itemPrice {
 .content-list {
   list-style-type: none;
   padding: 50px;
+}
+
+.btnowner a {
+  color: white;
 }

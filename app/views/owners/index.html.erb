@@ -1,3 +1,4 @@
+<section id="owners">
 <h1>All owners</h1>
 <div class="row">
 <div class="card-deck">
@@ -13,8 +14,7 @@
     <li class="list-group-item">City: <%= owner.city %>  </li>
   </ul>
   <div class="card-body">
-  <%=link_to "view", owner_path(owner), class: "card-link" %>
-  <%=link_to "pets", owner_path(owner), class: "card-link" %>
+  <button class="btn btn-primary btn-sm btnowner"><%=link_to "view", owner_path(owner) %></button>
   </div>
 </div>
 </div>
@@ -22,6 +22,5 @@
 </div>
 </div>
 
-
 <%= link_to "Create a Owner", new_owner_path%>
-
+</section>

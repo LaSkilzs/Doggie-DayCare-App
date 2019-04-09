@@ -19,6 +19,7 @@ RSpec.describe Dog, type: :model do
   end
   context 'dog model associations' do
     it {belong_to(:owner)}
+    it {have_many(:dogs)}
     it {have_many(:appointments)}
     it {have_many(:services)}
     it {have_many(:walkers)}
