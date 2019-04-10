@@ -7,31 +7,58 @@
     </ul>
   </div>
 <%end%>
+  
+<div class="container">
+  <div class="bg-light">
+    <div class="row">
+      <div class="card-body">
+        <form class="form" role="form" autocomplete="off">     
+          <%= form_for @walker, url: @walkers_path do |f| %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :age %> 
+              <%= f.text_field :age, class: "form-control", placeholder: "age"%>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :own_dog %> 
+              <%= f.check_box :own_dog, class: "form-control", placeholder: "own_dog"%>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :experience, class: "control-label" %> 
+                <select  name="experience" class="form-control", placeholder="choose experience">
+                <option value=training>training</option>
+                <option value=experienced>experienced</option>
+                <option value=apprentice>apprentice</option>
+                <option value=certified>certified</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :rating, class: "control-label" %> 
+              <%= f.text_field :rating, class:"form-control input-md", name: 'rating', placeholder: '0'%>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :user_id, class: "control-label" %> 
+              <%= f.text_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+            </div>
+          </div> 
+          <%= f.submit class: "btn btn-success btnform" %> 
+          <% end %>   
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form>
-<%= form_for @walker, url: @walkers_path do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-       <%= f.label :age %> 
-       <%= f.text_field :age, class: "form-control", placeholder: "age"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :experience %> 
-       <%= f.text_field :experience, class: "form-control", placeholder: "experience"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :own_dog %> 
-       <%= f.text_field :own_dog, class: "form-control", placeholder: "own_dog"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :rating %> 
-       <%= f.text_field :rating, class: "form-control", placeholder: "rating"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :user_id %> 
-       <%= f.text_field :user_id, class: "form-control", placeholder: "user_id"%>
-    </div>
-   </div>
-   <%= f.submit class: "btn btn-primary"%>
-  <% end %>
-</form>
+<%# <div class="redirects"> %>
+  <%= link_to "back", owners_path%> | <%= link_to "home", root_path %>
+<%# </div> %>
+

@@ -1,17 +1,20 @@
-<div class="card">
-  <div class="card-header"><h3><%=@walker.user.name%></h3></div>
-  <div class="card-body profile">
-    <div class="col-xl-7 dog-image">
-      <img src=<%= @walker.image%> alt="user" class="dog-image">
-    </div>
-    <div class="content">
-      <ul class="content-list">
-        <li><strong>Age:</strong> <%= @walker.age %></li>
-        <li><strong>Experience:</strong> <%= @walker.experience %></li>
-        <li><strong>Rating:</strong> <%= @walker.rating %></li>
-        <button type="button" class="btn btn-primary buttons">Like</button>
-        <button type="button" class="btn btn-primary buttons">book</button>
-      </ul>
+<div class="container">
+  <div class="card">
+    <div class="card-header"><h3><%=@walker.user.name%></h3></div>
+    <div class="card-body profile">
+      <div class="col-xl-7 dog-image">
+        <img src=<%= @walker.image%> alt="user" class="dog-image">
+      </div>
+      <div class="content">
+        <ul class="content-list">
+          <li><strong>Age:</strong> <%= @walker.age %></li>
+          <li><strong>Experience:</strong> <%= @walker.experience %></li>
+          <li><strong>Rating:</strong> <%= @walker.rating %></li>
+          <button type="button" class="btn btn-success buttons">Like</button>
+          <button type="button" class="btn btn-primary buttons"><%= link_to 'book', appointments_path %></button>
+          <button type="button" class="btn btn-warning buttons"><%= link_to 'add notes', invoices_path %></button>
+        </ul>
+      </div>
     </div>
   </div>
  </div>

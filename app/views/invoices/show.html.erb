@@ -1,54 +1,107 @@
-<div class="invoice-container">
-<h1>Individual Invoice</h1>
-	<table class="body-wrap">
-		<tr>
-			<td></td>
-			<td class="container" width="600">
-				<div class="content">
-					<table class="main" width="100%" cellpadding="0" cellspacing="0">
-						<tr>
-							<td class="content-wrap">
-								<table width="100%" cellpadding="0" cellspacing="0">
-									<tr>
-										<td class="content-block" style="text-align:center;">
-											<img src="http://api.harryward.biz/aZQB/gpoollogo.png" width="300px">
-											<h3>Name of Dog Invoice</h3> 
-											<h4>Type of Service</h4> 
-										</td>
-									</tr>
-									<tr style="text-align:center">
-										<td class="content-block"></td>
-									</tr>
-                  <div></div>
-                  <tr style="text-align:center">
-            			  <td class="content-block">amount: <%= @invoice.amount%></td>
-									</tr>
-                  <tr style="text-align:center">
-    									<td class="content-block">walked: <%= @invoice.walked%></td>
-									</tr>
-                  <tr style="text-align:center">
-            				  <td class="content-block"><%= @invoice.walk_rating%></td>
-									</tr>
-                  <tr style="text-align:center">
-        							<td class="content-block">notes: <%= @invoice.notes%></td>
-									</tr>
-                  <tr style="text-align:center">
-        							<td class="content-block"><%= @invoice.owner_comments%></td>
-									</tr>
-                  <tr style="text-align:center">
-        							<td class="content-block"><%= @invoice.walker_comments%></td>
-									</tr>
-									<tr style="text-align:center;">
-										<td class="content-block"> <a class="btn-primary" href="http://guidepool.io">Comment</a> 
-										</td>
-									</tr>
-									<tr>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
+<div class="container panel">
+	<h3 class="display-4">Invoice# <%=@invoice.id%></h3>
+	 <div class="row">
+    	<table class="table table-striped table-condensed">
+        <thead>
+        	<tr>
+          	<th>amount</th>
+            <th>walked?</th>
+            <th>walk_rating</th>
+            <th>status</th>                                          
+          </tr>
+        </thead>   
+        <tbody>
+          <tr>
+						<td>$<%=@invoice.amount%></td>
+						<td><%=@invoice.walked%></td>
+						<td><%=@invoice.walk_rating%></td>
+						<td><span class="label label-success"><%=@invoice.appointment.status%></span></td>            
+          </tr>                            
+        </tbody>
+      </table>
+   </div>
+  <div class="panel-heading"><h3 class="display-5">Comments</h3></div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2 col-md-1">
+            <img src=<%= @invoice.appointment.dog.image%> class="invoice-image" alt="" />
+          </div>
+          <div class="col-xs-10 col-md-11">
+            <div>
+              <%= link_to @invoice.appointment.dog.name%>
+                <div class="mic-info"></div>
+            </div>
+            <div class="comment-text">
+              <strong>SERVICE NOTES:</strong>   <%= @invoice.notes%>
+            </div>
+            <div class="action">
+                <button type="button" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs>
+                <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
+                </button>
+              </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2 col-md-1">
+            <img src=<%= @invoice.appointment.dog.owner.image %> class="img-circle img-responsive invoice-image" alt="" />
+          </div>
+          <div class="col-xs-10 col-md-11">
+            <div>
+              <%= link_to @invoice.appointment.dog.owner.user.name%>
+                <div class="mic-info"></div>
+            </div>
+            <div class="comment-text">
+              <strong>OWNER WALK COMMENTS:</strong><%= @invoice.owner_comments%>
+            </div>
+            <div class="action">
+                <button type="button" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs>
+                <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
+                </button>
+              </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2 col-md-1">
+            <img src=<%=@invoice.appointment.walker.image%> class="img-circle img-responsive invoice-image" alt="" /></div>
+            <div class="col-xs-10 col-md-11">
+              <div>
+                <%= link_to @invoice.appointment.walker.user.name%>
+                <div class="mic-info"></div>
+              </div>
+              <div class="comment-text">
+                <strong>WALKER WALK COMMENTS:</strong>   <%= @invoice.walker_comments%>
+              </div>
+              <div class="action">
+                <button type="button" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs>
+                <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr/>
   </div>
+</div>
+<div class="redirects">
+  <%= link_to "back", invoices_path %> | <%= link_to "edit", edit_invoice_path(@invoice) %> 
+</div>
 
-<%= link_to "back", invoices_path %> | <%= link_to "edit", edit_invoice_path(@invoice) %> 
+
 	

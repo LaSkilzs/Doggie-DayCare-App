@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h2 class="panel-title"> Invoice </h2>
+        </div>
+        <div class="panel-body">
+          <h3><%=@owner.user.name%></h3>
+        </div>
+        <ul class="list-group">
+          <% @owner.dogs.each do |dog|%>
+          <li class="list-group-item">
+            <h4>Account: <%=dog.name%></h4>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>appointment date</th>
+                    <th>time</th>
+                    <th>service</th>
+                    <th>package</th>
+                    <th>walker</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% dog.appointments.each do |appointment|%>
+                  <tr>
+                    <td><%=appointment.date%></td>
+                    <td><%=appointment.start_time%></td>
+                    <td><%=appointment.service.name%></td>
+                    <td><%=appointment.service.package%></td>
+                    <td><%=appointment.walker.user.name%></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p><%= link_to "owner", owner_path(@owner) %>   |  <%= link_to "home", root_path %> </p>

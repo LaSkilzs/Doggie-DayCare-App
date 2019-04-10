@@ -7,39 +7,38 @@
     </ul>
   </div>
 <%end%>
-<form>
-<%= form_for @invoice, url: @invoices_path do |f| %>
-
-<div class="control-group">
-  <%= f.label :amount, class: "control-label" %> 
-  <%= f.text_field :amount, class:"form-control input-md", name: 'amount', placeholder: 'amount'%>
-</div> 
-<div class="control-group">
-  <%= f.label :walked, class: "control-label" %> 
-  <%= f.text_field :walked, class:"form-control input-md", name: 'walked', placeholder: 'walked'%>
-</div> 
-<div class="control-group">
-  <%= f.label :walk_rating, class: "control-label" %> 
-  <%= f.text_field :walk_rating, class:"form-control input-md", name: 'walk_rating', placeholder: 'walk rating'%>
-</div> 
-
-<br>
-<div class="control-group">
-<%= f.label :notes, class: "control-label" %>           
-<textarea name="notes" class="form-control input-md" placeholder= 'notes'></textarea>
+<div class="container">
+  <div class="panel">
+    <div class="card-body">
+      <form class="former" role="form" autocomplete="off">     
+        <%= form_for @invoice, url: @invoices_path do |f| %>
+        <div class="form-group">
+          <%= f.label :amount %> 
+          <%= f.text_field :amount, class:"form-control input-md", name: 'amount', placeholder: 'amount'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :walked%> 
+          <%= f.text_field :walked, class:"form-control input-md", name: 'walked', placeholder: 'walked'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :walk_rating %> 
+          <%= f.text_field :walk_rating, class:"form-control input-md", name: 'walk_rating', placeholder: 'walk rating'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :notes%>           
+          <%= f.text_area :notes, class: "form-control input-md", placeholder: 'notes' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :owner_comments %> 
+          <%= f.text_area :owner_comments, class: "form-control input-md", placeholder: 'owner_comments' %>
+        </div>
+        <div class="form-group"">
+          <%= f.label :walker_comments %>             
+          <%= f.text_area :walker_comments, class: "form-control input-md", placeholder: 'walker_comments' %>
+        </div>
+        <%=f.submit class: "btn btn-success" %>
+        <% end %>
+      </form>
+    </div>
+   </div>
 </div>
-<br> <br>
-<div class="control-group">
-  <%= f.label :owner_notes, class: "control-label" %> 
-  <textarea name="owner_notes" class="form-control input-md" placeholder= 'owners notes'></textarea>
-</div>
-<br> <br>
-<div class="control-group">
- <%= f.label :walker_notes, class: "control-label" %>             
-<textarea name="walker_notes" class="form-control input-md" placeholder= 'walkers notes'></textarea>
-</div>
-<br> 
-
-<%=f.submit 'Confirm', class: "btn btn-success btn-lg"%>
-<% end %>
-</form>

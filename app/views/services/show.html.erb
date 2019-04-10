@@ -1,32 +1,38 @@
-<div class="container">    
+<section id="serviceshow">
+	<div class="container">    
+		<h1 class="display-3 headTitles"><%=@service.name%></h1>
 		<div class="row panel panel--styled">			
-					<div class="col-md-12 panelTop">	
-						<div class="col-md-5">	
-						  <img class="img-responsive dog-image" src=<%= @service.image%> alt=""/>
-						</div>
-						<div class="col-md-">	
-						  <h2><%=@service.name%></h2>
-							<p>Lorem ipsum dolor sit amet, altera propriae iudicabit eos ne. Vel ut accusam tacimates, prima oratio ius ea. Et duo alii verterem principes, te quo putent melius fabulas, ei scripta eligendi appareat duo.</p>
-							</div>
-					</div>
-					<div class="col-md-12 panelBottom">
-						<div class="col-md-4 text-center">
-							<button class="btn btn-lg btn-add-to-cart"><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart</button>						
-						</div>
-						<div class="col-md-4 text-left">
-							<h5>Price <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
-						</div>
-						<div class="col-md-4">
-							<div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-							</div>
-						</div>
-					</div>
+			<div class="col-md-12 panelTop">	
+			<div class="col-md-5">	
+				<img class="img-responsive dog-image" src=<%= @service.image%> alt=""/>
+			</div>
+			<div class="col-md-">	
+				<div class="sirtitle">
+					<h3><strong>Package: </strong><%=@service.package%></h3>							
+					<h3><strong>Bundle: </strong><%=@service.bundle%></h3>
 				</div>
-
-
+				<hr>										
+				<p>Lorem ipsum dolor sit amet, altera propriae iudicabit eos ne. Vel ut accusam tacimates, prima oratio ius ea. Et duo alii verterem principes, te quo putent melius fabulas, ei scripta eligendi appareat duo.</p>
+			</div>
+		</div>
+		<div class="col-md-12 panelBottom">
+			<div class="col-md-4">
+				<button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span><%= link_to 'book today', new_appointment_path %></button>
+			</div>
+			<div class="col-md-4 text-left">
+				<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
+			</div>
+			<div class="col-md-4">
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</section>
 <%= link_to "back", services_path %> | <%= link_to "edit", edit_service_path(@service) %> 

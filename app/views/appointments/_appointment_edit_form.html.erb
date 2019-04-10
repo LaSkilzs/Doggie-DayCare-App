@@ -7,56 +7,97 @@
     </ul>
   </div>
 <%end%>
-<form class="form-horizontal">
-<fieldset>
+<section class="appointment"> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well-block">
+          <div class="well-title">
+            <h2 class="display-5">Questions? Book an Appointment</h2>
+          </div>
+          <hr>
+          <form class="feature-block">
+            <!-- Form start -->
+          <div class="row">
+          <%= form_for @appointment, url: @appointments_path do |f| %>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :date, class: "control-label" %> 
+                <%= f.date_field :date, class:"form-control input-md", name: 'date', placeholder: 'date' %>
+              </div>
+            </div>
+                <!-- Text input-->
+            <div class="col-md-6">
+              <div class="form-group">
+              <%= f.label :start_time, class: "control-label" %> 
+              <%= f.time_field :start_time, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+              </div>
+            </div>
 
-<!-- Form Name -->
-<legend>Book Your Appointment Today</legend>
-<!-- Text input-->
-<%= form_for @appointment, url: @appointments_path do |f| %>
-<div class="control-group">
-  <%= f.label :date, class: "control-label" %> 
-  <%= f.date_field :date, class:"form-control input-md", name: 'date', placeholder: 'date' %>
+              <!-- Text input-->
+            <div class="col-md-6">
+              <div class="form-group">
+              <%= f.label :status, class: "control-label" %> 
+              <%= f.text_field :status, class: "form-control input-md", name: 'status', placeholder: 'pending' %> 
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              <%= f.label :dog_id, class: "control-label" %> 
+              <%= f.text_field :dog_id, class: "form-control input-md", name: 'dog_id', placeholder: 'pending' %> 
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              <%= f.label :walker_id, class: "control-label" %> 
+              <%= f.text_field :walker_id, class: "form-control input-md", name: 'walker_id', placeholder: 'pending' %> 
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              <%= f.label :service_id, class: "control-label" %> 
+              <%= f.text_field :service_id, class: "form-control input-md", name: 'service_id', placeholder: 'pending' %> 
+              </div>
+            </div>
+              <!-- Button -->
+            <%= f.submit class: "btn btn-secondary btnform" %>
+            <% end %>
+          </div>
+        </form>
+  <!-- form end -->
+  </div>
+  </div>
+  <div class="col-md-6">
+  <div class="well-block">
+  <div class="well-title">
+  <h2 class="display-5">Why Appointment with Us</h2>
+  </div>
+  <hr/>
+  <div class="feature-block">
+  <div class="feature feature-blurb-text">
+  <h4 class="feature-title">24/7 Hours Available</h4>
+  <div class="feature-content">
+  <p>Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis vehicula et, iaculis in magnestibulum.</p>
+  </div>
+  </div>
+  <div class="feature feature-blurb-text">
+  <h4 class="feature-title">Experienced Staff Available</h4>
+  <div class="feature-content">
+  <p>Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum quis feugiat risus. </p>
+  </div>
+  </div>
+  <div class="feature feature-blurb-text">
+  <h4 class="feature-title">Low Price & Fees</h4>
+  <div class="feature-content">
+  <p>Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor elementum nulla suscipit in.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+<div class="redirects">
+  <%= link_to "back", appointment_path(@appointment) %> | <%= link_to "homepage", root_path %> 
 </div>
-<div class="control-group">
-  <%= f.label :start_time, class: "control-label" %> 
-  <%= f.time_field :start_time, class:"form-control input-md", name: 'time', placeholder: 'time' %>
-</div>
-
-<div class="control-group">
-  <%= f.label :status, class: "control-label" %> 
-  <%= f.label :status, class: "control-label" %> 
-    <select name="status" class="form-control">
-      <option value="pending">pending</option>
-      <option value="cancelled">cancelled</option>
-      <option value="confirmed">confirmed</option>
-      <option value="completed">completed</option>
-    </select>
-</div>
-<br>
-<div class="control-group">
-  <%= f.label :services, class: "control-label" %> 
-  <%= f.collection_select(:service_id, Service.all, :id, :name, {class: "form-control"}, {placeholder: "choose services"})%>    
-</div>
-
-<div class="control-group">
-  <%= f.label :walker, class: "control-label" %> 
-  <%= f.collection_select(:walker_id, Walker.all, :id, :id, {class: "form-control"}, {placeholder: "choose services"})%>    
-</div>
-
-
-<!-- Text input-->
-<div class="control-group">
-  <%= f.label :pet, class: "control-label" %> 
-  <%= f.text_field :dog_id, class:"form-control input-md", name: 'dog_id', placeholder: 'pet name'%>
-</div>
-<br>
-<%=f.submit 'Book Now', class: 'btn btn-primary'%>
-<% end %>
-</form>
-
-
-
-
-
-

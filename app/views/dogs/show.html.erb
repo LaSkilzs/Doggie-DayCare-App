@@ -1,33 +1,29 @@
-<div class="row panel panel--styled">
-    <div class="col-md-5">          
+<div class="container">
+  <div>
+    <h2 class="display-3 well-title all-title">Pet's Show Page</h2>
+  </div>
+  <div class="panel panel-primary all-title well-title">
+    <div class="row  panel--styled">
+      <div class="col-md-5">          
         <img class="dog-image"src=<%= @dog.image%> alt="dog"> 
-    </div>
-    <div class="col-md-7">
-      <div class="firma-aciklama card-body">
+      </div>
+      <div class="col-md-7">
+        <div class="firma-aciklama card-body">
           <ul class="yacht-info__list space-2">
             <h4 class="display-3"><%= @dog.name%></h4>
             <hr>
-            <li><i class="fas fa-bone"></i>
-            <span>Age: <%= @dog.age%></span>
-            </li>
-            <li><i class="fas fa-bone"></i>
-            <span>Breed: <%= @dog.breed%></span>
-            </li>
-            <li><i class="fas fa-bone"></i>
-            <span>Size: <%= @dog.size%></span>
-            </li>
-            <li><i class="fas fa-bone"></i>
-            <span>Restrictions:<%= @dog.restrictions%></span>
-            </li>
-            <li><i class="fas fa-bone"></i>
-            <span>Friendliness: <%= @dog.friendliness%></span>
-            </li>
-          <div>
-            <button  type="button" class="btn btn-primary buttons">book</button>
-            <button  type="button" class="btn btn-primary buttons">comments</button>
-          </div>
+            <li><i class="fas fa-bone"></i><span>Age: <%= @dog.age%></span></li>
+            <li><i class="fas fa-bone"></i><span>Breed: <%= @dog.breed%></span></li>
+            <li><i class="fas fa-bone"></i><span>Size: <%= @dog.size%></span></li>
+            <li><i class="fas fa-bone"></i><span>Restrictions:<%= @dog.restrictions%></span></li>
+            <li><i class="fas fa-bone"></i><span>Friendliness: <%= @dog.friendliness%></span></li>
+            <div>
+              <button  type="button" class="btn btn-secondary btn-lg buttons"><%= link_to 'book today', new_appointment_path %></button>
+            </div>
           </ul>
         </div>
       </div>
-    </div>       
+    </div>  
+  </div>
+</div>          
 <p><%= link_to "back", dogs_path %> | <%= link_to "edit", edit_dog_path(@dog) %> </p>

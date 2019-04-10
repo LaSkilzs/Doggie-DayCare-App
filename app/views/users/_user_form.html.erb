@@ -7,31 +7,48 @@
     </ul>
   </div>
 <%end%>
-
-<form>
-<%= form_for @user, url: @users_path do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-       <%= f.label :name %> 
-       <%= f.text_field :name, class: "form-control", placeholder: "name"%>
+<div class="container">
+  <div class="bg-light">
+    <div class="row">
+      <div class="card-body">
+        <form class="form" role="form" autocomplete="off">     
+          <%= form_for @user, url: @users_path do |f| %>
+          <div class="col-md-6">
+            <div class="form-group">
+             <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= f.label :name %> 
+                <%= f.text_field :name, class: "form-control", placeholder: "name"%>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :username %> 
+                <%= f.text_field :username, class: "form-control", placeholder: "username"%>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :email %> 
+                <%= f.text_field :email, class: "form-control", placeholder: "email"%>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :role %>
+                <select class="form-control">
+                  <option value="owner">owner</option>
+                  <option value="walker">walker</option>
+                  <option value="admin">admiin</option>
+                </select> 
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :password %> 
+                <%= f.text_field :password, class: "form-control", placeholder: "password"%>
+              </div>
+            </div>
+            <%= f.submit class: "btn btn-primary"%>
+          <% end %>   
+        </form>
+      </div>
     </div>
-    <div class="form-group col-md-6">
-       <%= f.label :username %> 
-       <%= f.text_field :username, class: "form-control", placeholder: "username"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :email %> 
-       <%= f.text_field :email, class: "form-control", placeholder: "email"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :role %> 
-       <%= f.text_field :role, class: "form-control", placeholder: "role"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :password %> 
-       <%= f.text_field :password, class: "form-control", placeholder: "password"%>
-    </div>
-   </div>
-   <%= f.submit class: "btn btn-primary"%>
-  <% end %>
-</form>
+  </div>
+</div>
+</div>
+<div class="redirects">
+  <%= link_to "back", owners_path%> | <%= link_to "home", root_path %>
+</div>

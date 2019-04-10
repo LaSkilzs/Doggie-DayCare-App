@@ -1,26 +1,24 @@
-<section id="owners">
-<h1>All owners</h1>
-<div class="row">
-<div class="card-deck">
-<% @owners.each do |owner| %>
-<div class="col-md-4">
-<div class="card" style="width: 25rem;">
-  <img class="card-img-top" src=<%= owner.image %> alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%=link_to owner.user.name, owner_path(owner) %></h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Street: <%= owner.address %>  </li>
-    <li class="list-group-item">City: <%= owner.city %>  </li>
-  </ul>
-  <div class="card-body">
-  <button class="btn btn-primary btn-sm btnowner"><%=link_to "view", owner_path(owner) %></button>
-  </div>
-</div>
-</div>
-<% end %>
-</div>
-</div>
-
+<h1 class="display-3">All owners</h1>
+    <div class="row">
+      <div class="card-deck">
+      <% @owners.each do |owner| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 25rem;">
+            <img class="card-img-top" src=<%= owner.image %> alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%=link_to owner.user.name, owner_path(owner) %></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Street: <%= owner.address %>  </li>
+              <li class="list-group-item">City: <%= owner.city %>  </li>
+            </ul>
+            <div class="card-body">
+              <button class="btn btn-primary btn-sm btnowner"><%=link_to "view", owner_path(owner) %></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
 <%= link_to "Create a Owner", new_owner_path%>
-</section>
+

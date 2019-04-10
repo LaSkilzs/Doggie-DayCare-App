@@ -12,12 +12,13 @@
   </head>
 
  <body class="text-center">
-    <div class="d-flex h-100 p-3 mx-auto flex-column">
-      <%= render "shared/nav_shared"  %>
-        <div class="main-container">
-          <%= yield %>
-        </div>
-          <%= render "shared/footer_shared"%>
-    </div>   
+   <div class="nav-container">
+    <%= render "shared/nav_shared"%>
+   </div>
+   <div class="main-container">
+   <div class='spacemaker'><div>
+      <%= yield %>
+   </div>
+
   </body>
 </html>

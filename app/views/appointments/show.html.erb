@@ -1,84 +1,39 @@
-  <div class="invoice overflow-auto">
-    <div style="min-width: 600px">
-      <header>
-        <div class="row">
-          <div class="col company-details">
-            <h2 class="display-4">Sniff Scratch N' Shake</h2>
-            <div>sniffscratchnshke@example.com</div>
-            <hr>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+        <h1 class="display-4 well-title">Scheduled Appointment</h1>
+        <hr class="well-title"/>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-container">
+            <table class="table table-filter">
+              <tbody>
+                <tr data-status="pagado">
+                  <td >
+                    <div class="media">
+                      <img src=<%= @appointment.dog.image %> class="invoice-image">
+                        <div class="media-body">
+                          <span class="media-meta pull-right"><%= @appointment.date %></span>
+                          <h4 class="title"><%= @appointment.dog.name %></h4>
+                            <ul class="list">
+                              <li><strong>SERVICE:</strong> <%= link_to @appointment.service.name, service_path(@appointment.service)%></li>
+                              <li><strong>START TIME:</strong> <%= @appointment.start_time%></li>
+                              <li><strong>STATUS:</strong> <%= @appointment.status%></li>
+                              <li><strong>WALKER:</strong> <%= link_to @appointment.walker.user.name, walker_path(@appointment.walker)%></li>
+                            </ul>
+                            <button type="button" class="btn btn-success"><%= link_to 'back', new_appointment_path %></button>
+                            <button type="button" class="btn btn-primary"><%= link_to 'edit', edit_appointment_path(@appointment) %></button>
+                            <button type="button" class="btn btn-warning"><%= link_to 'add notes', invoice_path(@appointment) %></button>
+                        </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </header>
-
-<h3>status: <%= @appointment.status%></h3>
-<h5>Walker Scheduled: <%= link_to @appointment.walker.user.name, walker_path(@appointment.walker)%></h5>
-<hr>
-
-<div id="receipt">
-    <main>
-     <div class="row contacts">
-      <div class="col invoice-to">
-       <div class="text-gray-light">INVOICE TO:</div>
-        <h2 class="to"><%=link_to @appointment.dog.name, dog_path(@appointment.dog)%></h2>
-         <div class="address"><%=link_to @appointment.dog.owner.address, owner_path(@appointment.dog.owner)%></div>
-           <div class="email"><a href="mailto:john@example.com"><%= @appointment.dog.owner.user.email%></a></div>
-           </div>
-        <div class="col invoice-details"> INVOICE ID#
-          <h1 class="invoice-id"><%= @appointment.invoices[0].id%></h1>
-          <div class="date">Date of Invoice: <%=Date.today()%></div>
-          <div class="date">Due Date: <%= @appointment.date%></div>
-        </div>
       </div>
-      <hr>
-      <table border="0" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-              <th class="text-left">SERVICE</th>
-              <th class="text-left" colspan="2">PACKAGE</th>
-              <th class="text-left" colspan="2">BUNDLE</th>
-              <th class="text-left" colspan="2">AMOUNT</th>
-          </tr>
-        </thead>
-          <tbody>
-            <tr>
-              <td class="text-left"><h3><%= @appointment.service.name%></h3>
-              <p>Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget.</p>
-              </td>
-              <td class="unit" colspan="2"><%= @appointment.service.package%></td>
-              <td class="qty" colspan="2"><%= @appointment.service.bundle%></td>
-              <td class="total" colspan="2"><%= @appointment.service.pkg_amount%></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">SUBTOTAL</td>
-              <td><%= @appointment.invoices[0].amount%></td>
-            </tr>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">TAX 25%</td>
-              <td>$300.00</td>
-            </tr>
-            <tr>
-              <td colspan="2"></td>
-              <td colspan="2">GRAND TOTAL</td>
-              <td>$325.63</td>
-            </tr>
-          </tfoot>
-        </table>
-    <div class="thanks">Thank you!</div>
-    <div class="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
     </div>
-  </main>
-  <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
-  </footer>
+  </div>
 </div>
-<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
-<div></div>
-    </div>
-</div>
-<%= link_to "back", appointments_path %> | <%= link_to "edit", edit_appointment_path(@appointment) %> 
+

@@ -1,28 +1,50 @@
-<h1>All Appointments</h1>
-<div class="cars-horizon">
-<div class="container">
-<%@appointments.each do|appointment|%>
-<div class="row border">
-  <div class="col-md-4 car-image-block">
-    <img src=<%=appointment.dog.image%> alt="pic">
-  </div>
-  <div class="col-md-8 card-body ">
-    <h3><%=appointment.dog.name%></h3> 
-    <h5><%=appointment.service.name%></h5>
-    <ul class="list-inline">
-      <li class="list-inline-item"><%=appointment.date%></li>
-      <li class="list-inline-item"><%=appointment.status%></li>
-      <li class="list-inline-item"><%=appointment.start_time%></li>
-    </ul>
-    <button type="button" class="btn btn-outline-danger"><%=link_to 'Book Today', edit_appointment_path(appointment)%></button>
+<div class="container" style="margin-top:20px;">
+  <div class="row">
+    <div id="user" class="col-md-12" >
+      <div class="panel panel-primary panel-table">
+        <div class="panel-heading " style="padding:5px;">
+          <div class="text-center">
+            <h1 class="display-3">Appointment List</h1>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="list">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                      <th class="avatar">photo</th>
+                      <th>date</th>
+                      <th>time</th>
+                      <th>service</th>
+                      <th>pet</th>
+                      <th>status</th>
+                      <th><em class="fa fa-cog"></em></th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                      <% @appointments.each do|appointment|%>
+                      <tr class="ok">
+                        <td class="avatar-image"><img src=<%= appointment.dog.image %> alt="pic" class="invoice-image"></td>
+                        <td><%=appointment.date %></td>
+                        <td><%=appointment.start_time %></td>
+                        <td><%= link_to appointment.service.name, service_path(appointment.service) %></td>
+                        <td><%= link_to appointment.dog.name, dog_path(appointment.dog) %></td>
+                        <td><%=appointment.status %></td>
+                        <td align="center">
+                        <button class="btn btn-primary"><%= link_to 'show', appointment_path(appointment)%></i></button>
+                        <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment)%></i></button>
+                        <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(appointment)%></i></button>
+                        </td>
+                      </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+              </div><!-- END id="list" -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<%end%>
-  </div>
-</div>
-<%= link_to "Create a Appointment", new_appointment_path%>
-
-
-       
-   
-
+    

@@ -7,23 +7,42 @@
     </ul>
   </div>
 <%end%>
-
-<form>
-<%= form_for @owner, url: @owners_path do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-       <%= f.label :address %> 
-       <%= f.text_field :address, class: "form-control", placeholder: "street"%>
+<div class="container">
+  <div class="panel">
+    <div class="row">
+        <div class="card-body">
+          <form class="form" role="form" autocomplete="off">     
+            <%= form_for @owner, url: @owners_path do |f| %>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :address %> 
+                <%= f.text_field :address, class: "form-control", placeholder: "street"%>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :city, class: "control-label" %> 
+                <%= f.text_field :city, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :user_id, class: "control-label" %> 
+                <%= f.text_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+              </div>
+            </div> 
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.hidden_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+              </div>
+            </div>
+            <%= f.submit class: "btn btn-success btnform" %> 
+            <% end %>   
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="form-group col-md-6">
-       <%= f.label :city %> 
-       <%= f.text_field :city, class: "form-control", placeholder: "city"%>
-    </div>
-    <div class="form-group col-md-6">
-       <%= f.label :user_id %> 
-       <%= f.text_field :user_id, class: "form-control", placeholder: "user_id"%>
-    </div>
-   </div>
-   <%= f.submit class: "btn btn-primary"%>
-  <% end %>
-</form>
+  </div>
+<div class="redirects">
+  <%= link_to "back", owners_path%> | <%= link_to "home", root_path %>
+</div>
