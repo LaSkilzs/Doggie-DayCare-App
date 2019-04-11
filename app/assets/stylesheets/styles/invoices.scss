@@ -1,0 +1,11 @@
+@import "bootstrap";
+
+body.section #invoices {
+  height: 100vh;
+  background-color: red;
+}
+
+body.invoice-container {
+  height: 100vh;
+  background-color: blue;
+}

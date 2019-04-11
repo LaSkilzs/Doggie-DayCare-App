@@ -1,11 +1,22 @@
-<h1><%= @walker.user.name%></h1>
-
-<div>Age: <%= @walker.age%></div>
-<div>Experience: <%= @walker.experience%></div>
-<div>Own Dogs?: <%= @walker.own_dog%></div>
-<div>Rating: <%= @walker.rating%></div>
-
-<br>
-<br>
-
-<%= link_to "back", walkers_path %> | <%= link_to "edit", edit_walker_path(@walker) %> 
+<div class="container">
+  <div class="card">
+    <div class="card-header"><h3><%=@walker.user.name%></h3></div>
+    <div class="card-body profile">
+      <div class="col-xl-7 dog-image">
+        <img src=<%= @walker.image%> alt="user" class="dog-image">
+      </div>
+      <div class="content">
+        <ul class="content-list">
+          <li><strong>Age:</strong> <%= @walker.age %></li>
+          <li><strong>Experience:</strong> <%= @walker.experience %></li>
+          <li><strong>Rating:</strong> <%= @walker.rating %></li>
+          <button type="button" class="btn btn-success buttons">Like</button>
+          <button type="button" class="btn btn-primary buttons"><%= link_to 'book', appointments_path %></button>
+          <button type="button" class="btn btn-warning buttons"><%= link_to 'add notes', invoices_path %></button>
+        </ul>
+      </div>
+    </div>
+  </div>
+ </div>
+          
+<p><%= link_to "back", walkers_path, class: "mt-3 white-color" %> | <%= link_to "edit", edit_walker_path(@walker), class: "mt-3 white-color" %> </p>

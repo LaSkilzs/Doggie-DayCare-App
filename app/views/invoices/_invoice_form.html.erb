@@ -1,34 +1,44 @@
-<%= form_for @invoice, url: @invoices_path do |f| %>
-<p>
-  <%= f.label :amount %> 
-  <%= f.text_field :amount%>
-</p>
-<p>
-  <%= f.label :walked%> 
-  <%= f.text_field :walked%>
-</p>
-<p>
-  <%= f.label :walk_rating %> 
-  <%= f.text_field :walk_rating%>
-</p>
-<p>
-  <%= f.label :notes %> 
-  <%= f.text_field :notes%>
-</p>
-<p>
-  <%= f.label :owner_comments %> 
-  <%= f.text_field :owner_comments%>
-</p>
-<p>
-  <%= f.label :walker_comments %> 
-  <%= f.text_field :walker_comments%>
-</p>
-<p>
-  <%= f.label :appointment_id %> 
-  <%= f.text_field :appointment_id%>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-
-<% end %>
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+<div class="container">
+  <div class="panel">
+    <div class="card-body">
+      <form class="former" role="form" autocomplete="off">     
+        <%= form_for @invoice, url: @invoices_path do |f| %>
+        <div class="form-group">
+          <%= f.label :amount %> 
+          <%= f.text_field :amount, class:"form-control input-md", name: 'amount', placeholder: 'amount'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :walked%> 
+          <%= f.text_field :walked, class:"form-control input-md", name: 'walked', placeholder: 'walked'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :walk_rating %> 
+          <%= f.text_field :walk_rating, class:"form-control input-md", name: 'walk_rating', placeholder: 'walk rating'%>
+        </div> 
+        <div class="form-group">
+          <%= f.label :notes%>           
+          <%= f.text_area :notes, class: "form-control input-md", placeholder: 'notes' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :owner_comments %> 
+          <%= f.text_area :owner_comments, class: "form-control input-md", placeholder: 'owner_comments' %>
+        </div>
+        <div class="form-group"">
+          <%= f.label :walker_comments %>             
+          <%= f.text_area :walker_comments, class: "form-control input-md", placeholder: 'walker_comments' %>
+        </div>
+        <%=f.submit class: "btn btn-success" %>
+        <% end %>
+      </form>
+    </div>
+   </div>
+</div>

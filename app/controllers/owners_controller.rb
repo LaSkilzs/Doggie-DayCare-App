@@ -10,9 +10,15 @@ class OwnersController < ApplicationController
   end
 
   def create
-  flash[:notice] = "Owner was created"
+  
   @owner = Owner.create(owner_params)
-  redirect_to @owner
+  if @owner.save
+      flash[:notice] = "Owner was created"
+      redirect_to @owner
+    else
+      @errors = @owner.errors.full_message
+      render :new
+    end
   end
 
   def show

@@ -12,7 +12,13 @@ class ServicesController < ApplicationController
   def create
   flash[:notice] = "service was created"
   @service = Service.create(service_params)
-  redirect_to @service
+  if @service.save
+      flash[:notice] = "service was created"
+      redirect_to @service
+    else
+      # @errors = @service.errors.full_message
+      render :new
+    end
   end
 
   def show

@@ -1,9 +1,31 @@
-<h1>All Services</h1>
-<ol>
-<% @services.each do |service| %>
-<li> <%=link_to service.user.name, service_path(service) %></li>
-<br>
-<% end %>
-</ol>
+<div class='spacemaker'></div>
+<section id="services">
+  <div class="service-head">
+    <h2 class="display-3">Our Services</h2>
+  </div>
+  <div class="container panel">
+    <div class="row">
+    <% @services.each do |service| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src=<%=service.image%> alt="Card image cap">
+          <div class="card-body">
+            <h1><%=link_to service.name, service_path(service) %></h1>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to 'View', service_path(service) %></button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to 'Book', new_appointment_path %></button>
+                </div>
+              </div>   
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>
 
-<%= link_to "Create a Service", new_service_path%>
+           
+ 
+ 

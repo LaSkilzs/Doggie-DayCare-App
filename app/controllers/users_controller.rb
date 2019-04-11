@@ -12,7 +12,13 @@ class UsersController < ApplicationController
   def create
   flash[:notice] = "User was created"
   @user = User.create(user_params)
-  redirect_to @user
+  if @user.save
+      flash[:notice] = "user was created"
+      redirect_to @user
+    else
+      # @errors = @user.errors.full_message
+      render :new
+    end
   end
 
   def show

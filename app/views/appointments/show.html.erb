@@ -1,13 +1,39 @@
-<h1><%= @appointment.user.name%></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+        <h1 class="display-4 well-title">Scheduled Appointment</h1>
+        <hr class="well-title"/>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-container">
+            <table class="table table-filter">
+              <tbody>
+                <tr data-status="pagado">
+                  <td >
+                    <div class="media">
+                      <img src=<%= @appointment.dog.image %> class="invoice-image">
+                        <div class="media-body">
+                          <span class="media-meta pull-right"><%= @appointment.date %></span>
+                          <h4 class="title"><%= @appointment.dog.name %></h4>
+                            <ul class="list">
+                              <li><strong>SERVICE:</strong> <%= link_to @appointment.service.name, service_path(@appointment.service)%></li>
+                              <li><strong>START TIME:</strong> <%= @appointment.start_time%></li>
+                              <li><strong>STATUS:</strong> <%= @appointment.status%></li>
+                              <li><strong>WALKER:</strong> <%= link_to @appointment.walker.user.name, walker_path(@appointment.walker)%></li>
+                            </ul>
+                            <button type="button" class="btn btn-success"><%= link_to 'back', new_appointment_path %></button>
+                            <button type="button" class="btn btn-primary"><%= link_to 'edit', edit_appointment_path(@appointment) %></button>
+                            <button type="button" class="btn btn-warning"><%= link_to 'add notes', invoice_path(@appointment) %></button>
+                        </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div>date: <%= @appointment.date%></div>
-<div>start_time: <%= @appointment.start_time%></div>
-<div>status: <%= @appointment.status%></div>
-<div>dog_id: <%= @appointment.dog.name%></div>
-<div>walkder_id: <%= @appointment.walker.user.name%></div>
-<div>services_id: <%= @appointment.service.name%></div>
-
-<br>
-<br>
-
-<%= link_to "back", appointments_path %> | <%= link_to "edit", edit_appointment_path(@appointment) %> 

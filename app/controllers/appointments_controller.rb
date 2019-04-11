@@ -10,9 +10,14 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-  flash[:notice] = "appointment was created"
-  @appointment = Appointment.create(appointment_params)
-  redirect_to @appointment
+  @appointment = Appointment.new(appointment_params)
+    if @appointment.save
+      flash[:notice] = "appointment was created"
+      redirect_to @appointment
+    else
+      @errors = @appointment.errors.full_message
+      render :new
+    end
   end
 
   def show
