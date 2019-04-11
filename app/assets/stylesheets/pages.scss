@@ -72,6 +72,9 @@ a:hover {
   color: #fff;
   border-bottom-color: #fff;
 }
+.white-color {
+  color: white;
+}
 
 body {
   padding: 0 1.5rem;
@@ -300,6 +303,23 @@ h2 {
 }
 p {
   color: black;
+}
+nav .navbar-brand {
+  font-size: 30px;
+  color: green !important;
+  font-weight: bold;
+}
+.mt-3 {
+  font-size: 18px;
+}
+.grey-color {
+  color: grey;
+}
+.royal-color {
+  color: royalblue;
+}
+button .white-btn {
+  color: white !important;
 }
 
 .card-container.card {

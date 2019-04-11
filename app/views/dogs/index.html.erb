@@ -1,6 +1,7 @@
 <div class='spacemaker'></div>
 <section id="dogs">
-<h1>All Dogs</h1>
+<h1 class="display-4">Our Furry Companions</h1>
+<%= link_to "Create a Dog", new_dog_path, class: " mt-3 white-color"%>
 <div class="row">
   <div class="card-deck">
     <% @dogs.each do |dog| %>
@@ -22,7 +23,6 @@
     <% end %>
   </div>
 </div>
-<%= link_to "Create a Dog", new_dog_path%>
 </section>
 
 

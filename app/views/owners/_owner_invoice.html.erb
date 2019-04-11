@@ -43,4 +43,4 @@
   </div>
 </div>
 
-<p><%= link_to "owner", owner_path(@owner) %>   |  <%= link_to "home", root_path %> </p>
+<p><%= link_to "owner", owner_path(@owner), class: "mt-3 white-color" %>   |  <%= link_to "home", root_path, <%= link_to "Create a Owner", new_owner_path, class: "mt-3 white-color"  %> </p>
