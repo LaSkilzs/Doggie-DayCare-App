@@ -3,9 +3,6 @@ class PagesController < ApplicationController
     @title = "Sniff Scratch n' Shake"
   end
 
-  def checkout
-  end
-
   def contact
   end
 

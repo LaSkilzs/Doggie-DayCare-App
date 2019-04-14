@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-  @appointment = Appointment.new(appointment_params)
+  @appointment = Appointment.new(strong_params[:appointment].slice(:date, :start_time, :status, :dog_id, :walker_id, :service_id))
     if @appointment.save
       flash[:notice] = "appointment was created"
       redirect_to @appointment
@@ -27,7 +27,7 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    @appointment.update(appointment_params)
+    @appointment.update(strong_params[:appointment].slice(:date, :start_time, :status, :dog_id, :walker_id, :service_id))
     redirect_to @appointment
   end
 
@@ -42,7 +42,5 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
-  def appointment_params
-    params.require(:appointment).permit(:date, :start_time, :status, :dog_id, :walker_id, :service_id)
-  end
+
 end

@@ -10,13 +10,12 @@ class WalkersController < ApplicationController
   end
 
   def create
-  flash[:notice] = "walker was created"
-  @walker = Walker.create(walker_params)
+  @walker = Walker.create(strong_params[:walker].slice(:age, :experience, :own_dog, :rating, :user_id))
   if @walker.save
       flash[:notice] = "walker was created"
       redirect_to @walker
     else
-      # @errors = @walker.errors.full_message
+      flash[:notice] = "something went  wrong😪"
       render :new
     end
   end
@@ -28,7 +27,7 @@ class WalkersController < ApplicationController
   end
 
   def update
-    @walker.update(walker_params)
+    @walker.update(strong_params[:walker].slice(:age, :experience, :own_dog, :rating, :user_id))
     redirect_to @walker
   end
 
@@ -43,7 +42,4 @@ class WalkersController < ApplicationController
     @walker = Walker.find(params[:id])
   end
 
-  def walker_params
-    params.require(:walker).permit(:age, :experience, :own_dog, :rating, :user_id)
-  end
 end

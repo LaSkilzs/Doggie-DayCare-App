@@ -10,13 +10,12 @@ class ServicesController < ApplicationController
   end
 
   def create
-  flash[:notice] = "service was created"
-  @service = Service.create(service_params)
+  @service = Service.create(strong_params[:services].slice(:name, :bundle, :category, :package, :max_time, :pkg_amount, :hourly_rate))
   if @service.save
       flash[:notice] = "service was created"
       redirect_to @service
     else
-      # @errors = @service.errors.full_message
+      flash[:notice] = "something went wrong"
       render :new
     end
   end
@@ -28,7 +27,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @service.update(service_params)
+    @service.update(strong_params[:services].slice(:name, :bundle, :category, :package, :max_time, :pkg_amount, :hourly_rate))
     redirect_to @service
   end
 
@@ -43,7 +42,4 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
   end
 
-  def service_params
-    params.require(:service).permit(:name, :bundle, :category, :package, :max_time, :pkg_amount, :hourly_rate)
-  end
 end

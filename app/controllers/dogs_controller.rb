@@ -11,7 +11,7 @@ class DogsController < ApplicationController
 
   def create
     flash[:notice] = "dog was created"
-    @dog = Dog.create(dog_params)
+    @dog = Dog.create(strong_params[:dog].slice(:name, :age, :breed, :size, :restrictions, :friendliness, :image, :owner_id))
   if @dog.save
       redirect_to @dog
     else
@@ -45,9 +45,5 @@ class DogsController < ApplicationController
   private
   def find_dog
     @dog = Dog.find(params[:id])
-  end
-
-  def dog_params
-    params.require(:dog).permit(:name, :age, :breed, :size, :restrictions, :friendliness, :image, :owner_id)
   end
 end

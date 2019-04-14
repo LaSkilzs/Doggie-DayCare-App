@@ -1,3 +1,5 @@
+
+
 <% if @errors.present? %>
   <div class="errors">
     <ul>
@@ -7,42 +9,50 @@
     </ul>
   </div>
 <%end%>
-<div class="container">
-  <div class="panel">
-    <div class="row">
-        <div class="card-body">
-          <form class="form" role="form" autocomplete="off">     
-            <%= form_for @owner, url: @owners_path do |f| %>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :address %> 
-                <%= f.text_field :address, class: "form-control", placeholder: "street"%>
+
+<% if current_user %>
+  <div class="container">
+    <div class="panel">
+      <div class="row">
+          <div class="card-body">
+            <form class="form" role="form" autocomplete="off">     
+              <%= form_for @owner, url: @owners_path, method: 'POST' do |f| %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :address %> 
+                  <%= f.text_field :address, class: "form-control", placeholder: "street"%>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :city, class: "control-label" %> 
-                <%= f.text_field :city, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :city, class: "control-label" %> 
+                  <%= f.text_field :city, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :user_id, class: "control-label" %> 
-                <%= f.text_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :user_id, class: "control-label" %> 
+                  <%= f.text_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+                </div>
+              </div> 
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.hidden_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
+                </div>
               </div>
-            </div> 
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.hidden_field :user_id, class: "form-control input-md", name: 'user_id', placeholder: '0' %> 
-              </div>
-            </div>
-            <%= f.submit class: "btn btn-success btnform" %> 
-            <% end %>   
-          </form>
+              <%= f.submit class: "btn btn-success btnform" %> 
+              <% end %>   
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  <div class="redirects">
+    <%= link_to "back", login_path, class: "mt-3 white-color"%> | <%= link_to "home", root_path, class: "mt-3 white-color" %>
   </div>
-<div class="redirects">
-  <%= link_to "back", owners_path, class: "mt-3 white-color"%> | <%= link_to "home", root_path, class: "mt-3 white-color" %>
-</div>
+<% else %>
+ <div class="redirects">
+    <%= link_to "home", root_path %> |
+    <%= link_to 'Log In', login_path %>
+ </div> 
+<% end %>
