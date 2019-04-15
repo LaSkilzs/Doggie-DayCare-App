@@ -114,7 +114,8 @@ body {
   margin-top: 50px;
 }
 
-.feature-block form {
+.feature-block form,
+.feature.block {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }

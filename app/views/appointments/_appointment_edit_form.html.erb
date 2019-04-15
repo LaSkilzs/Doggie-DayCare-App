@@ -8,7 +8,6 @@
   </div>
 <%end%>
 
-<% if current_user %>
   <section class="appointment"> 
     <div class="container">
       <div class="row">
@@ -18,57 +17,98 @@
               <h2 class="display-5">Questions? Book an Appointment</h2>
             </div>
             <hr>
-            <form class="feature-block">
-              <!-- Form start -->
+            <% if current_user.role == "owner" %>
             <div class="row">
-            <%= form_for @appointment, url: @appointments_path, method: 'PATCH' do |f| %>
-              <div class="col-md-6">
+              <%= form_for @appointment,:html => {class:"feature-block"}, url: @appointments_path, method: 'PATCH' do |f| %>
+              <div class="col-md-12">
                 <div class="form-group">
                   <%= f.label :date, class: "control-label" %> 
-                  <%= f.date_field :date, class:"form-control input-md", name: 'date', placeholder: 'date' %>
+                  <%= f.date_field :date, class:"form-control", placeholder: 'date' %>
                 </div>
               </div>
-                  <!-- Text input-->
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                 <%= f.label :start_time, class: "control-label" %> 
-                <%= f.time_field :start_time, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+                <%= f.time_field :start_time, class:"form-control", placeholder: 'time'%>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :status, class: "control-label" %> 
+                <%= f.text_field :status, class: "form-control",placeholder: 'pending', :disabled => true %> 
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :dog_id, class: "control-label" %> 
+                 <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control'}, :disabled => true %> 
                 </div>
               </div>
 
-                <!-- Text input-->
-              <div class="col-md-6">
-                <div class="form-group">
-                <%= f.label :status, class: "control-label" %> 
-                <%= f.text_field :status, class: "form-control input-md", name: 'status', placeholder: 'pending' %> 
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                <%= f.label :dog_id, class: "control-label" %> 
-                <%= f.text_field :dog_id, class: "form-control input-md", name: 'dog_id', placeholder: 'pending' %> 
-                </div>
-              </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                 <%= f.label :walker_id, class: "control-label" %> 
-                <%= f.text_field :walker_id, class: "form-control input-md", name: 'walker_id', placeholder: 'pending' %> 
+                <%= f.number_field :walker_id, class: "form-control", placeholder: 'pending', :disabled => true %> 
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                 <%= f.label :service_id, class: "control-label" %> 
-                <%= f.text_field :service_id, class: "form-control input-md", name: 'service_id', placeholder: 'pending' %> 
+               <%=f.collection_select :service_id, Service.all, :id, :name, {}, {:class => 'form-control'} %> 
+              </div>
+                <!-- Button -->
+              <%= f.submit class: "btn btn-secondary btnform" %>
+              <% end %>
+            </div>
+            <% else %>
+            <div class="row">
+              <%= form_for @appointment,  :html => {class: "feature block"}, url: @appointments_path, method: 'PATCH' do |f| %>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= f.label :date, class: "control-label" %> 
+                  <%= f.date_field :date, class:"form-control", placeholder: 'date', :disabled => true %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :start_time, class: "control-label" %> 
+                <%= f.time_field :start_time, class:"form-control", placeholder: 'time', :disabled => true%>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= f.label :status %> 
+                  <%= f.select :status, Appointment.statuses.keys, {}, {class: "form-control"}  %>
+                </div>
+              </div>
+          
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :dog_id, class: "control-label" %> 
+                 <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control',:disabled => true} %> 
+                </div>
+              </div>
+               
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :walker_id, class: "control-label" %> 
+                <%= f.number_field :walker_id, class: "form-control", value: current_user.walkers[0].id, :disabled => true %> 
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                <%= f.label :service_id, class: "control-label" %> 
+                <%=f.collection_select :service_id, Service.all, :id, :name, {}, {:class => 'form-control',:disabled => true} %> 
                 </div>
               </div>
                 <!-- Button -->
               <%= f.submit class: "btn btn-secondary btnform" %>
               <% end %>
             </div>
-          </form>
-    <!-- form end -->
-    </div>
-    </div>
+            <% end %>
+          </div>
+        </div>
     <div class="col-md-6">
     <div class="well-block">
     <div class="well-title">
@@ -100,12 +140,15 @@
     </div>
     </div>
     </section>
-  <div class="redirects">
-    <%= link_to "back", appointment_path(@appointment), class: 'mt-3 white-color'%> | <%= link_to "homepage", root_path, class: 'mt-3 white-color' %> 
-  </div>
-<% else %>
-  <div class="redirects"> 
-    <%= link_to "home", root_path %> |
-    <%= link_to 'Log In', login_path %>
-  </div> 
-<% end %>
+  
+    <% if current_user.role == "walker" %>
+      <div class="redirects">
+        <%= link_to "back", @appointments_path, class: "mt-3 white-color" %> | <%= link_to "profile", walker_path(@appointment.walker), class: 'mt-3 white-color' %> 
+      </div>
+    <% else %>
+      <div class="redirects"> 
+        <%= link_to "profile", owner_path(@appointment.dog.owner) %> |
+        <%= link_to "home", root_path %>
+      </div> 
+    <% end %>
+ 
