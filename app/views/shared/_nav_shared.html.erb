@@ -1,16 +1,23 @@
-<% if current_user.role == "walker"%>
+<% if current_user == nil %>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+     <a class="navbar-brand navtitle" href="#"><%= @title %></a> 
+          <%=link_to "Home", root_path, class: 'nav-link' %>
+          <%=link_to "Services", services_path, class: 'nav-link' %>
+          <%=link_to "Contact", pages_contact_path, class: 'nav-link' %>
+          <%=link_to "Login", login_path, class: 'nav-link' %>
+      </nav>
+    </div>
+<% elsif current_user.role == "walker"%>
   <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
      <a class="navbar-brand navtitle" href="#"><%= @title %></a> 
           <%=link_to "Home", root_path, class: 'nav-link' %>
           <%=link_to "Services", services_path, class: 'nav-link' %>
           <%=link_to "Dogs", dogs_path, class: 'nav-link' %>
+          <%=link_to "Profile", walker_path(current_user.walkers[0]), class: 'nav-link' %>
           <%=link_to "Appointments", appointments_path, class: 'nav-link' %>
-          <% if current_user == "" %>
-          <%=link_to "SignIn", pages_login_path, class: 'nav-link' %>
-          <% else %>
-          <%=link_to "LogOut", pages_login_path, class: 'nav-link' %>
-          <% end %>
+          <%=link_to "LogOut", logout_path, method: :delete, class: 'nav-link' %> 
       </nav>
     </div>
     <% else %>
@@ -20,12 +27,8 @@
         <%=link_to "Home", root_path, class: 'nav-link' %>
         <%=link_to "Services", services_path, class: 'nav-link' %>
         <%=link_to "Contact", pages_contact_path, class: 'nav-link' %>
-        <% if current_user == "" %>
-          <%=link_to "SignIn", pages_login_path, class: 'nav-link' %>
-          <% else %>
-          <%=link_to "LogOut", pages_login_path, class: 'nav-link' %>
-          <% end %>
-    
+        <%=link_to "Profile", owner_path(current_user.owners[0]), class: 'nav-link' %>
+          <%=link_to "LogOut", logout_path, method: :delete, class: 'nav-link' %>
         </nav>
       </div>
     <% end%>

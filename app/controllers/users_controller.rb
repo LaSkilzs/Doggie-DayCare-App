@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   @user = User.create(user_params)
   # byebug
   if @user.save
-      session[:user_id] = @user.id
+      log_in(@user)
       flash[:notice] = "user was created"
       redirect_to @user
     else

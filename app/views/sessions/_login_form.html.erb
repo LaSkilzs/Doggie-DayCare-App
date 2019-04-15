@@ -1,0 +1,39 @@
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+
+
+<div class="container">
+  <h3 class="display-4">Login</h3>
+    <div class="card card-container signcard">
+      <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" /> 
+      <p id="profile-name" class="profile-name-card"></p>
+       <%= form_for :session, :html => {class: "form-signin"}, url: @login_path, method: 'POST' do |f| %>
+          <span id="reauth-email" class="reauth-email"></span>
+          <%= f.email_field :email, class: "form-control", placeholder: "Email address" %>
+          
+          <%= f.password_field :password, class: "form-control", placeholder: "password address"%>
+
+          <%= f.submit 'Log in', class: "btn btn-lg btn-primary btn-block btn-signin"%>
+        <% end %>
+        <br>
+        <p class="forgot-password"><%= link_to 'Forgot the password?', login_path %></p>
+      <div>
+        <br>
+        <span><strong><%= link_to 'Create New Account', pages_login_path, class: 'royal-color' %></strong></span>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
