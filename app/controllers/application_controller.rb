@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user != nil
   end
-  
-  def strong_params
-    request.parameters
+
+  def log_out
+    session[:user_id].clear
   end
 
 end

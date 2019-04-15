@@ -11,6 +11,7 @@ class WalkersController < ApplicationController
 
   def create
   @walker = Walker.create(strong_params[:walker].slice(:age, :experience, :own_dog, :rating, :user_id))
+     byebug
   if @walker.save
       flash[:notice] = "walker was created"
       redirect_to @walker
@@ -40,6 +41,10 @@ class WalkersController < ApplicationController
   private
   def find_walker
     @walker = Walker.find(params[:id])
+  end
+
+  def walker_params
+    params.require(:walker).permit!
   end
 
 end

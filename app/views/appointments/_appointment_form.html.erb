@@ -16,71 +16,57 @@
             <h2 class="display-5">Questions? Book an Appointment</h2>
           </div>
           <hr>
-          <form class="feature-block">
             <!-- Form start -->
-          <div class="row">
-          <%= form_for @appointment, url: @appointments_path do |f| %>
-            <div class="col-md-6">
+          <div class="feature-block">
+          <%= form_for @appointment,  :html => {class: "feature block"}, url: @appointments_path, method: 'POST' do |f| %>
+            <div class="col-sm-12">
               <div class="form-group">
                 <%= f.label :date, class: "control-label" %> 
-                <%= f.date_field :date, class:"form-control input-md", name: 'date', placeholder: 'date' %>
+                <%= f.date_field :date, class:"form-control", placeholder: 'date' %>
               </div>
             </div>
                 <!-- Text input-->
-            <div class="col-md-6">
+            <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :start_time, class: "control-label" %> 
-              <%= f.time_field :start_time, class:"form-control input-md", name: 'start_time', placeholder: 'time'%>
+              <%= f.time_field :start_time, class:"form-control", placeholder: 'time'%>
               </div>
             </div>
 
               <!-- Text input-->
-            <div class="col-md-6">
+            <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :status, class: "control-label" %> 
-              <%= f.text_field :status, class: "form-control input-md", name: 'status', placeholder: 'pending' %> 
+              <%= f.text_field :status, class: "form-control", placeholder: 'pending', value: "pending"%> 
               </div>
             </div>
           
-            <div class="col-md-6">
+            <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :pet, class: "control-label" %> 
-                <select name="pet" class="form-control">
-                <%= Dog.all.each do |dog|%>
-                  <option value=<%=dog.id%>><%=dog.name%></option>
-                  <% end%>
-                </select>
+              <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control'} %>
               </div>
             </div>
           
               <!-- Select Basic -->
-            <div class="col-md-12">
+            <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :services, class: "control-label" %> 
-                <select  name="services" class="form-control", placeholder="choose services">
-                <%= Service.all.each do |service|%>
-                  <option value=<%=service.name%>><%=service.name%></option>
-                <% end %>
-                </select>
+              <%=f.collection_select :service_id, Service.all, :id, :name, {}, {:class => 'form-control'} %>
               </div>
             </div>
-              <!-- Select Basic -->
-            <div class="col-md-12">
-              <div class="form-group">
-              <%= f.label :walkers, class: "control-label" %> 
-                <select  name="walker_id" class="form-control", placeholder="choose walker">
-                 <%= Walker.all.each do |walker|%>
-                  <option value=<%=walker.id%>><%= walker.user.name%></option>
-                <% end %>
-                </select>
-              </div>
-            </div>
+              
 
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.label :walker_id %>
+                <%= f.collection_select :walker_id, Walker.all, :id, :age, {}, {:class => 'form-control'}  %>
+              </div>
+            </div>
               <!-- Button -->
             <%= f.submit class: "btn btn-secondary btnform" %>
             <% end %>
           </div>
-        </form>
   <!-- form end -->
   </div>
   </div>
@@ -108,6 +94,9 @@
   <div class="feature-content">
   <p class="white-color" >Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor elementum nulla suscipit in.</p>
   </div>
+<div class="redirects">
+   <%= link_to "go back home", root_path(root_path), class: "white-color mt-3" %> 
+</div>
   </div>
   </div>
   </div>
@@ -115,6 +104,3 @@
   </div>
   </div>
   </section>
-<div class="redirects">
-   <%= link_to "go back home", root_path(root_path), class: "white-color mt-3" %> 
-</div>
