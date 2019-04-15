@@ -14,8 +14,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       flash[:notice] = "appointment was created"
       redirect_to @appointment
-    else
-      @errors = @appointment.errors.full_message
+    else       
       render :new
     end
   end
@@ -43,6 +42,8 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :start_time, :status, :dog_id, :walker_id, :service_id)
+    params.require(:appointment).permit!
   end
+
+
 end

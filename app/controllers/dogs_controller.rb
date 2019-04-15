@@ -10,12 +10,11 @@ class DogsController < ApplicationController
   end
 
   def create
-    flash[:notice] = "dog was created"
     @dog = Dog.create(dog_params)
-  if @dog.save
+    if @dog.save
+      flash[:notice] = "dog was created"
       redirect_to @dog
     else
-      # @errors = @dog.errors.full_message
       render :new
     end
   end
@@ -27,11 +26,10 @@ class DogsController < ApplicationController
   end
 
   def update
-    if @dog.update_attributes(dog_params)
+    if @dog.update(dog_params)
       flash[:notice] = "dog was created"
       redirect_to @dog
     else
-      # @errors = @dog.errors.full_message
       render :edit
     end
   end
@@ -48,6 +46,6 @@ class DogsController < ApplicationController
   end
 
   def dog_params
-    params.require(:dog).permit(:name, :age, :breed, :size, :restrictions, :friendliness, :image, :owner_id)
+    params.require(:dog).permit!
   end
 end

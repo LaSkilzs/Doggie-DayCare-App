@@ -1,0 +1,12 @@
+<% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@appointment.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

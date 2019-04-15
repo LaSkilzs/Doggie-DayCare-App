@@ -14,7 +14,7 @@
       <div class="row">
           <div class="card-body">
           <h3>Welcome, <%=current_user.name%></h3>
-              <%= form_for @owner, :html => {class: "form"}, url: @owners_path, method:'POST' do |f| %>
+              <%= form_for @owner, :html => {class: "form"}, url: @owners_path, method:'PATCH' do |f| %>
               <div class="col-md-6">
                 <div class="form-group">
                   <%= f.label :address %> 

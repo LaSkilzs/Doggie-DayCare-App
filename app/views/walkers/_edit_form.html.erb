@@ -13,7 +13,7 @@
     <div class="bg-light">
       <div class="row">
         <div class="card-body">    
-            <%= form_for @walker, :html => {class: "form"}, url: @walkers_path, method: 'POST' do |f| %>
+            <%= form_for @walker, :html => {class: "form"}, url: @walkers_path, method: 'PATCH' do |f| %>
             <div class="col-md-6">
               <div class="form-group">
                 <%= f.label :age %> 

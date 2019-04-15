@@ -113,6 +113,11 @@ body {
 .feature-block {
   margin-top: 50px;
 }
+
+.feature-block form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .btnform {
   margin-left: 15px;
   margin-top: 15px;
@@ -158,6 +163,9 @@ body {
   text-transform: capitalize;
 }
 
+.card.ocard {
+  margin-top: 0;
+}
 .card-img-top {
   height: 285px;
 }
@@ -622,4 +630,20 @@ button .white-btn {
   font-weight: 700;
   margin: 2% 8%;
   border: none;
+}
+
+/* forms */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    color: red;
+  }
 }

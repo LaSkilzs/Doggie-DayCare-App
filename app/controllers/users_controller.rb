@@ -1,3 +1,5 @@
+require 'byebug'
+
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
@@ -10,13 +12,13 @@ class UsersController < ApplicationController
   end
 
   def create
-  flash[:notice] = "User was created"
   @user = User.create(user_params)
+  # byebug
   if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "user was created"
       redirect_to @user
     else
-      # @errors = @user.errors.full_message
       render :new
     end
   end
@@ -42,8 +44,7 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
-
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.require(:user).permit!
   end
 end

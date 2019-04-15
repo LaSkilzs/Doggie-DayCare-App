@@ -10,13 +10,12 @@ class WalkersController < ApplicationController
   end
 
   def create
-  flash[:notice] = "walker was created"
   @walker = Walker.create(walker_params)
   if @walker.save
       flash[:notice] = "walker was created"
       redirect_to @walker
     else
-      # @errors = @walker.errors.full_message
+      flash[:notice] = "something went  wrong😪"
       render :new
     end
   end
@@ -44,6 +43,7 @@ class WalkersController < ApplicationController
   end
 
   def walker_params
-    params.require(:walker).permit(:age, :experience, :own_dog, :rating, :user_id)
+    params.require(:walker).permit!
   end
+
 end
