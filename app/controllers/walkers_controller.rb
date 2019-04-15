@@ -10,8 +10,7 @@ class WalkersController < ApplicationController
   end
 
   def create
-  @walker = Walker.create(strong_params[:walker].slice(:age, :experience, :own_dog, :rating, :user_id))
-     byebug
+  @walker = Walker.create(walker_params)
   if @walker.save
       flash[:notice] = "walker was created"
       redirect_to @walker
@@ -28,7 +27,7 @@ class WalkersController < ApplicationController
   end
 
   def update
-    @walker.update(strong_params[:walker].slice(:age, :experience, :own_dog, :rating, :user_id))
+    @walker.update(walker_params)
     redirect_to @walker
   end
 

@@ -1,11 +1,17 @@
-<h1><%= @user.name%></h1>
+<div class="container">
 
-<div>Address: <%= @user.username%></div>
-<div>City: <%= @user.email%></div>
+    <div class="card">
+      <h1><%= @user.name%></h1>
+      <div>Address: <%= @user.username%></div>
+      <div>City: <%= @user.email%></div>
+      <br>
+      <br>
+      <div class="buttons">
+        <button type="button" class="btn btn-outline-success bright"><%= link_to "create owner", new_owner_path %></button> | <button type="button" class="btn btn-outline-success bright"><%= link_to "create walker", new_walker_path %></button>
+      </div>
 
-<br>
-<br>
-<div class="buttons">
-<button type="button" class="btn btn-outline-success bright"><%= link_to "create owner", new_owner_path %></button> | <button type="button" class="btn btn-outline-success bright"><%= link_to "create walker", new_walker_path %></button>
+  </div>
+  <p><%= link_to "back", pages_login_path, class: "mt-3 white-color"  %>   |  <%= link_to "edit", edit_user_path(current_user), class: "mt-3 white-color"  %> </p>
+</div>
 
  

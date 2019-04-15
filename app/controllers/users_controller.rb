@@ -12,14 +12,13 @@ class UsersController < ApplicationController
   end
 
   def create
-  @user = User.create(strong_params[:user].slice(:name, :username, :password, :role, :email))
+  @user = User.create(user_params)
   # byebug
   if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "user was created"
       redirect_to @user
     else
-      flash[:notice] = "user was not created"
       render :new
     end
   end
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(strong_params[:user].slice(:name, :username, :password, :role, :email))
+    @user.update(user_params)
     redirect_to @user
   end
 
@@ -44,5 +43,8 @@ class UsersController < ApplicationController
   private
   def find_user
     @user = User.find(params[:id])
+  end
+  def user_params
+    params.require(:user).permit!
   end
 end

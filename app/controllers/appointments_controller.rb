@@ -11,12 +11,10 @@ class AppointmentsController < ApplicationController
 
   def create
   @appointment = Appointment.new(appointment_params)
-  byebug
     if @appointment.save
       flash[:notice] = "appointment was created"
       redirect_to @appointment
-    else
-      @errors = @appointment.errors.full_message
+    else       
       render :new
     end
   end

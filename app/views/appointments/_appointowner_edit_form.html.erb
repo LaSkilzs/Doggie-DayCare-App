@@ -18,7 +18,7 @@
           <hr>
           <form class="feature-block">
             <div class="row">
-            <%= form_for @appointment, url: @appointments_path do |f| %>
+            <%= form_for @appointment, url: @appointments_path, method: 'PATCH' do |f| %>
               <div class="col-md-6">
                 <div class="form-group">
                   <%= f.label :date, class: "control-label" %> 

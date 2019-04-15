@@ -13,7 +13,7 @@
     <div class="panel">
       <div class="row">
           <div class="card-body">  
-              <%= form_for @dog, :html => {class: "form"}, url: @dogs_path, method: 'POST' do |f| %>
+              <%= form_for @dog, :html => {class: "form"}, url: @dogs_path, method: 'PATCH' do |f| %>
               <div class="form-row">
                 <div class="form-group col-md-6">
                     <%= f.label :name %> 
