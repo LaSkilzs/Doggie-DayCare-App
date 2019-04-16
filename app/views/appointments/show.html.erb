@@ -23,7 +23,11 @@
                             </ul>
                             <button type="button" class="btn btn-success"><%= link_to 'back', new_appointment_path %></button>
                             <button type="button" class="btn btn-primary"><%= link_to 'edit', edit_appointment_path(@appointment) %></button>
-                            <button type="button" class="btn btn-warning"><%= link_to 'add notes', invoice_path(@appointment) %></button>
+                            <% if @appointment.invoice == nil%>
+                               <button type="button" class="btn btn-warning"><%= link_to 'add notes', new_invoice_path %></button>
+                            <% else %>
+                              <button type="button" class="btn btn-warning"><%= link_to 'add notes', invoice_path(@appointment.invoice.id) %></button>
+                            <% end %>
                         </div>
                     </div>
                   </td>

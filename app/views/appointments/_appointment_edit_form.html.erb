@@ -17,6 +17,7 @@
               <h2 class="display-5">Questions? Book an Appointment</h2>
             </div>
             <hr>
+            <div class="feature-block">
             <% if current_user.role == "owner" %>
             <div class="row">
               <%= form_for @appointment,:html => {class:"feature-block"}, url: @appointments_path, method: 'PATCH' do |f| %>
@@ -41,7 +42,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                 <%= f.label :dog_id, class: "control-label" %> 
-                 <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control'}, :disabled => true %> 
+                 <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control', :disabled => true} %> 
                 </div>
               </div>
 
@@ -107,38 +108,9 @@
               <% end %>
             </div>
             <% end %>
+            </div>
           </div>
         </div>
-    <div class="col-md-6">
-    <div class="well-block">
-    <div class="well-title">
-    <h2 class="display-5">Why Appointment with Us</h2>
-    </div>
-    <hr/>
-    <div class="feature-block">
-    <div class="feature feature-blurb-text">
-    <h4 class="feature-title">24/7 Hours Available</h4>
-    <div class="feature-content">
-    <p class="white-color">Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis vehicula et, iaculis in magnestibulum.</p>
-    </div>
-    </div>
-    <div class="feature feature-blurb-text">
-    <h4 class="feature-title">Experienced Staff Available</h4>
-    <div class="feature-content">
-    <p class="white-color" >Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum quis feugiat risus. </p>
-    </div>
-    </div>
-    <div class="feature feature-blurb-text">
-    <h4 class="feature-title">Low Price & Fees</h4>
-    <div class="feature-content">
-    <p class="white-color" >Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor elementum nulla suscipit in.</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
     </section>
   
     <% if current_user.role == "walker" %>

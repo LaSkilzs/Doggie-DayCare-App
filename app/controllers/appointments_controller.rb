@@ -12,6 +12,8 @@ class AppointmentsController < ApplicationController
   def create
   @appointment = Appointment.new(appointment_params)
     if @appointment.save
+      Invoice(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment_id)
+      
       flash[:notice] = "appointment was created"
       redirect_to @appointment
     else       

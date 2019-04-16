@@ -37,7 +37,7 @@
             <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :status, class: "control-label" %> 
-              <%= f.text_field :status, class: "form-control", placeholder: 'pending', value: "pending", :disabled => true%> 
+              <%= f.select :status, Appointment.statuses.keys, {value: "pending"}, {class: "form-control"}  %>
               </div>
             </div>
           
