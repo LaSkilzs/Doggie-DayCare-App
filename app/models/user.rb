@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :walkers
 
 
-   enum role: {owner: "owner", walker: "walker"}
+   enum role: {owner: "owner", walker: "walker", admin: "admin"}
 
 
   validates_presence_of :name, :email, :username, :role, :password_digest

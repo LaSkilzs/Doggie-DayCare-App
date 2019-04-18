@@ -1,8 +1,10 @@
+require 'byebug'
+
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-     @users = User.all
+    @users = User.all
   end
 
   def new
@@ -10,20 +12,27 @@ class UsersController < ApplicationController
   end
 
   def create
-  flash[:notice] = "User was created"
   @user = User.create(user_params)
+  render json: @user
   if @user.save
-      flash[:notice] = "user was created"
-      redirect_to @user
-    else
-      # @errors = @user.errors.full_message
-      render :new
-    end
+    session[:user_id] = @user.id
+    redirect_to walkers_path
+  else
+    flas[:notice] = "invalid user info"
+    redirect_to owners_path
+  end
+  # byebug
+  # if @user.save && @user.authenticate(user_params[:password]) 
+  #     flash[:notice] = "user was created"
+  #     session[:user_id] = @user.id
+  #     redirect_to @user
+  #   else
+  #     @errors = @user.errors.full_message
+  #     render :new
+  #   end
   end
 
-  def show
-  end
-  
+
   def edit
   end
 
@@ -44,6 +53,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.require(:user).permit(:name, :username, :role, :email, :password)
   end
 end

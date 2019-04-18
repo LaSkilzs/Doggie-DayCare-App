@@ -1,17 +1,23 @@
+<p id="alert"><%= notice %>
+
 <div class="container">
   <h3 class="display-4">Sign In</h3>
     <div class="card card-container signcard">
       <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" /> 
       <p id="profile-name" class="profile-name-card"></p>
-      <form class="form-signin">
+      <%= form_tag sessions_path, local: true, class: "form-signin" do %>
         <span id="reauth-email" class="reauth-email"></span>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="email" name="email" class="form-control" placeholder="email" required/>
+        <input type="password" name="password" class="form-control" placeholder="password" required/>
+      
         <div id="remember" class="checkbox">
           <label><input type="checkbox" value="remember-me"> Remember me</label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-      </form>
+        
+        <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin"> signin </button>
+        <% end %>
+    
+
         <a href="#" class="forgot-password">Forgot the password?</a>
       <div>
         <br>
