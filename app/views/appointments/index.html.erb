@@ -21,6 +21,7 @@
                       <th><em class="fa fa-cog"></em></th>
                     </tr> 
                   </thead>
+                  <%= paginate @appointments, window: 1 %>
                   <tbody>
                       <% @appointments.each do|appointment|%>
                       <tr class="ok">

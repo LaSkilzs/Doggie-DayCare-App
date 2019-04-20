@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
-     @appointments = Appointment.all
+     @appointments = Appointment.order(status: :desc).page(params[:page])
   end
 
   def new
