@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       log_in(user)
-        if user.owners[0] 
+        if user.owners.length > 0
           redirect_to owner_path(user.owners[0])
-        elsif user.walkers[0]
+        elsif user.walkers.length > 0
           redirect_to walker_path(user.walkers[0])
         else
           flash[:notice] = "Please create an owner or walker account"
-          redirect_to pages_login_path
+          redirect_to login_path
         end
     else
       render 'new'
