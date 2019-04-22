@@ -3,7 +3,10 @@
       <h1 class="display-2">Sniff Scratch n' Shake</h1>
          <p class="front">Doggie Services</p>
          <p class="front">A place where a dog can hang!</p>
-      <button class="btn btn-outline-secondary" type="submit"><%= link_to 'Get Started', pages_login_path %></button>
+         <% if current_user%>
+         <% else%>
+      <button class="btn btn-outline-secondary" type="submit"><%= link_to 'Get Started', login_path %></button>
+      <% end %>
    </div>
 </main>
 

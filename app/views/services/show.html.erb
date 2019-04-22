@@ -17,7 +17,7 @@
 		</div>
 		<div class="col-md-12 panelBottom">
 			<div class="col-md-4">
-				<button class="btn btn-outline-secondary"><%= link_to 'book today', edit_appointment_path(@service.appointments[0].id) %></button>
+				<button class="btn btn-outline-secondary"><%= link_to 'book today', new_appointment_path %></button>
 			</div>
 			<div class="col-md-4 text-left">
 				<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
@@ -35,4 +35,4 @@
 		</div>
 	</div>
 </section>
-<%= link_to "back", services_path, class: "white-color mt-3" %> | <%= link_to "edit", edit_service_path(@service), class: "white-color mt-3" %> 
+<%= link_to "back", services_path, class: "white-color mt-3" %> | <%= link_to "home", root_path, class: "white-color mt-3" %> 
