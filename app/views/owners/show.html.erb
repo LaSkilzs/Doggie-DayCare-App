@@ -15,7 +15,7 @@
     <div class="card-body"><h5 class="card-text">Furry Friends </h5></div>
       <ul class="list-group list-group-flush">
         <% @owner.dogs.each do |dog| %>
-          <li class="list-group-item"><%= link_to dog.name, dog_path(dog) %></li>
+          <li class="list-group-item"><%= link_to dog.name, dog_path(dog) %>   <span className="appointment-notificatiion"><i class="far fa-calendar-check"></i></span></li>
         <% end %>
       </ul>
     </div>
