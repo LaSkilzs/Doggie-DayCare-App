@@ -1,4 +1,4 @@
-class OwnersController < ApplicationController
+ class OwnersController < ApplicationController
   before_action :find_owner, only: [:show, :edit, :update, :destroy]
 
   def index

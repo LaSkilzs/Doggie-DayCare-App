@@ -36,14 +36,22 @@
             <div class="comment-text">
               <strong>SERVICE NOTES:</strong>   <%= @invoice.notes%>
             </div>
-            <div class="action">
+             <% if current_user && current_user.role == "walker"%>
+              <div class="action">
                 <button type="button" class="btn btn-warning btn-xs">
-                <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
+                <span class="glyphicon glyphicon-ok"> <%= link_to 'add', edit_invoice_path(@invoice)%></span>
+                </button>
+              </div>
+            <% else %>
+              <div class="action">
+                <button type="button" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-ok"> <%= link_to 'add', edit_invoice_path(@invoice)%></span>
                 </button>
                 <button type="button" class="btn btn-danger btn-xs>
                 <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
                 </button>
               </div>
+              <% end %>
           </div>
         </div>
       </li>
@@ -60,7 +68,8 @@
             <div class="comment-text">
               <strong>OWNER WALK COMMENTS:</strong><%= @invoice.owner_comments%>
             </div>
-            <div class="action">
+             <% if current_user && current_user.role == "owner"%>
+              <div class="action">
                 <button type="button" class="btn btn-warning btn-xs">
                 <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
                 </button>
@@ -68,6 +77,7 @@
                 <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
                 </button>
               </div>
+            <% end %>
           </div>
         </div>
       </li>
@@ -83,14 +93,16 @@
               <div class="comment-text">
                 <strong>WALKER WALK COMMENTS:</strong>   <%= @invoice.walker_comments%>
               </div>
-              <div class="action">
-                <button type="button" class="btn btn-warning btn-xs">
-                <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs>
-                <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
-                </button>
-              </div>
+              <% if current_user && current_user.role == "walker"%>
+                <div class="action">
+                  <button type="button" class="btn btn-warning btn-xs">
+                  <span class="glyphicon glyphicon-ok"> <%= link_to 'edit', edit_invoice_path(@invoice)%></span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs>
+                  <span class="glyphicon glyphicon-ok"><%= link_to 'delete', root_path%></span>
+                  </button>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -100,7 +112,7 @@
   </div>
 </div>
 <div class="redirects">
-  <%= link_to "back", invoices_path, class: "mt-3 white-color"  %> | <%= link_to "edit", edit_invoice_path(@invoice), class: "mt-3 white-color"  %> 
+  <%= link_to "back", invoices_path, class: "mt-3 white-color"  %> | <%= link_to "home", root_path, class: "mt-3 white-color"  %> 
 </div>
 
 
