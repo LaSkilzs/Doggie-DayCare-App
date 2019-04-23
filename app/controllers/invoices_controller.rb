@@ -2,7 +2,7 @@ class InvoicesController < ApplicationController
   before_action :find_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
-     @invoices = Invoice.all
+     @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
   end
 
   def new

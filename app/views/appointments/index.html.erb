@@ -41,7 +41,10 @@
               </div><!-- END id="list" -->
             </div>
           </div>
-        </div>
+          <div >
+          <%= paginate @appointments %>
+          <%= page_entries_info @appointments %>
+        </div>    
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
 class DogsController < ApplicationController
   before_action :find_dog, only: [:show, :edit, :update, :destroy]
 
-  def index
-     @dogs = Dog.all
+  def index           
+     @dogs = Dog.order(age: :asc)
   end
 
   def new
