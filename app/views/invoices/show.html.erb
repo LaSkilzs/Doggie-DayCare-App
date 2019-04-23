@@ -28,9 +28,9 @@
           <div class="col-xs-2 col-md-1">
             <img src=<%= @invoice.appointment.dog.image%> class="invoice-image" alt="" />
           </div>
-          <div class="col-xs-10 col-md-11">
+          <div class="col-xs-10 col-md-11 green-color">
             <div>
-              <%= link_to @invoice.appointment.dog.name%>
+              <%= link_to @invoice.appointment.dog.name,nil, class: "green-color" %>
                 <div class="mic-info"></div>
             </div>
             <div class="comment-text">
@@ -62,7 +62,7 @@
           </div>
           <div class="col-xs-10 col-md-11">
             <div>
-              <%= link_to @invoice.appointment.dog.owner.user.name%>
+              <%= link_to @invoice.appointment.dog.owner.user.name,nil, class: "green-color"%>
                 <div class="mic-info"></div>
             </div>
             <div class="comment-text">
@@ -87,7 +87,7 @@
             <img src=<%=@invoice.appointment.walker.image%> class="img-circle img-responsive invoice-image" alt="" /></div>
             <div class="col-xs-10 col-md-11">
               <div>
-                <%= link_to @invoice.appointment.walker.user.name%>
+                <%= link_to @invoice.appointment.walker.user.name, nil, class: "green-color"%>
                 <div class="mic-info"></div>
               </div>
               <div class="comment-text">

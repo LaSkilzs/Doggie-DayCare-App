@@ -13,16 +13,16 @@ class UsersController < ApplicationController
 
   def create
   @user = User.create(user_params)
-  # byebug
   if @user.save
       log_in(@user)
-      flash[:notice] = "user was created"
       if @user.owners[0] 
         redirect_to owner_path(@user.owners[0])
       elsif @user.walkers[0]
         redirect_to walker_path(@user.walkers[0])
+      elsif @user.role == "owner"
+        redirect new_owner_path
       else
-        @user
+        redirect new_walker_path
       end
     else
       render :new

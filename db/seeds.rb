@@ -80,28 +80,30 @@ puts("10 walker")
 @comments = ["Great Walk, would definitly use this walker again", "Walker was late and left my door unlocked", "Okay", "Excellent", "Satisfactory", "Horrible, walker should be fired"]
 
 service_pic = [
-  "https://cdn.pixabay.com/photo/2017/11/22/11/10/dog-2970260_1280.jpg","https://images.pexels.com/photos/1249208/pexels-photo-1249208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","http://static.cdnbridge.com/resources/18/160536/picture/06/85954310.jpg","https://images.pexels.com/photos/2080850/pexels-photo-2080850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/998254/pexels-photo-998254.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/218825/pexels-photo-218825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://www.kivodaily.com/wp-content/uploads/2019/02/z-5.jpg","https://www.pompanopetlodge.com/wp-content/themes/pompanopetlodge/images/3.jpg","http://www.playfulpoochusa.com/mcefiles/The-Dogs-Love-the-New-Turf.jpg","https://images.pexels.com/photos/164446/pexels-photo-164446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/57627/pexels-photo-57627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/1831997/pexels-photo-1831997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  "https://images.pexels.com/photos/533502/pexels-photo-533502.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/1249208/pexels-photo-1249208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","http://static.cdnbridge.com/resources/18/160536/picture/06/85954310.jpg","https://images.pexels.com/photos/2080850/pexels-photo-2080850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/998254/pexels-photo-998254.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/218825/pexels-photo-218825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://www.kivodaily.com/wp-content/uploads/2019/02/z-5.jpg","https://www.pompanopetlodge.com/wp-content/themes/pompanopetlodge/images/3.jpg","http://www.playfulpoochusa.com/mcefiles/The-Dogs-Love-the-New-Turf.jpg","https://images.pexels.com/photos/164446/pexels-photo-164446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/57627/pexels-photo-57627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/1831997/pexels-photo-1831997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/374898/pexels-photo-374898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 ]
 #walking
-  Service.create!(name: "walking", bundle: "five", category: "package", package: "standard", max_time: "quarter", pkg_amount: 35.00, hourly_rate: 7.00, image: service_pic[0])
-  Service.create!(name: "walking", bundle: "fifteen", category: "package", package: "best", max_time: "half", pkg_amount: 70.00, hourly_rate: 7.00, image: service_pic[1])
-  Service.create!(name: "walking", bundle: "thirty", category: "package", package: "premium", max_time: "hour", pkg_amount: 105.00, hourly_rate: 7.00, image: service_pic[2])
+  Service.create!(name: "15 min Walks", bundle: "five", category: "walking", package: "standard", max_time: "quarter", pkg_amount: 35.00, hourly_rate: 7.00, image: service_pic[2])
+  Service.create!(name: "30 min Walks", bundle: "fifteen", category: "walking", package: "best", max_time: "half", pkg_amount: 70.00, hourly_rate: 7.00, image: service_pic[1])
+  Service.create!(name: "An Hour Out", bundle: "thirty", category: "walking", package: "premium", max_time: "hour", pkg_amount: 105.00, hourly_rate: 7.00, image: service_pic[0])
  puts("service walking")
 #daycare 1/2 day
-   Service.create!(name: "daycare", bundle: "five", category: "package", package: "best", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 18.00, image: service_pic[3])
-   Service.create!(name: "daycare", bundle: "fifteen", category: "package", package: "premium", max_time: "halfday", pkg_amount: 900.00, hourly_rate: 180.00, image: service_pic[4])
-   Service.create!(name: "daycare", bundle: "thirty", category: "package", package: "premium", max_time: "halfday", pkg_amount: 1350.00, hourly_rate: 270.00, image: service_pic[5])
+   Service.create!(name: "Halfday-5", bundle: "five", category: "daycare", package: "best", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 18.00, image: service_pic[3])
+   Service.create!(name: "Halfday-15", bundle: "fifteen", category: "daycare", package: "premium", max_time: "halfday", pkg_amount: 900.00, hourly_rate: 180.00, image: service_pic[4])
+   Service.create!(name: "Halfday-30", bundle: "thirty", category: "daycare", package: "premium", max_time: "halfday", pkg_amount: 1350.00, hourly_rate: 270.00, image: service_pic[5])
     puts("1/2 daycare")
 #daycare full day
-   Service.create!(name: "daycare", bundle: "five", category: "package", package: "best", max_time: "fullday", pkg_amount: 150.00, hourly_rate: 30.00, image: service_pic[6])
-   Service.create!(name: "daycare", bundle: "fifteen", category: "package", package: "premium", max_time: "fullday", pkg_amount: 900.00, hourly_rate: 300.00, image: service_pic[7])
-   Service.create!(name: "daycare", bundle: "thirty", category: "package", package: "premium", max_time: "fullday", pkg_amount: 1280.00, hourly_rate: 450.00, image: service_pic[8])
+   Service.create!(name: "Fullday-5", bundle: "five", category: "daycare", package: "best", max_time: "fullday", pkg_amount: 150.00, hourly_rate: 30.00, image: service_pic[6])
+   Service.create!(name: "Fullday-15", bundle: "fifteen", category: "daycare", package: "premium", max_time: "fullday", pkg_amount: 900.00, hourly_rate: 300.00, image: service_pic[7])
+   Service.create!(name: "Fullday-30", bundle: "thirty", category: "daycare", package: "premium", max_time: "fullday", pkg_amount: 1280.00, hourly_rate: 450.00, image: service_pic[8])
     puts("full daycare")
 #inhome
-  Service.create!(name: "inhome", bundle: "one", category: "rate", package: "standard", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 12.00, image: service_pic[9])
+  Service.create!(name: "Inhome halfday", bundle: "one", category: "inhome", package: "standard", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 12.00, image: service_pic[9])
    puts("service inhome")
 #overnight
-  Service.create!(name: "overnight", bundle: "one", category: "rate", package: "standard", max_time: "halfday", pkg_amount: 120.00, hourly_rate: 15.00, image: service_pic[10])
+  Service.create!(name: "Inhome overnight", bundle: "one", category: "overnight", package: "standard", max_time: "halfday", pkg_amount: 120.00, hourly_rate: 15.00, image: service_pic[10])
+   puts("service overnight")
+  Service.create!(name: "Overnight", bundle: "one", category: "overnight", package: "standard", max_time: "halfday", pkg_amount: 90.00, hourly_rate: 12.00, image: service_pic[11])
    puts("service overnight")
    
 
@@ -109,10 +111,12 @@ service_pic = [
 
 @time = ["6:30", "7:45", "8:15", "9:15", "10:30", "11:15","6:45", "7:30", "8:45", "9:30", "10:45", "11:30" ]
 
-@status =["pending", "confirmed", "cancelled", "completed"]
+@status =["pending", "confirmed", "cancelled"]
+
+@booked=[true, false]
 
 35.times do
-  Appointment.create!(dog_id: @dog_ids.sample, date: Faker::Date.between(6.months.ago, 1.year.from_now), start_time: @time.sample , status: @status.sample, walker_id: @walker_ids.sample, service_id: @service.sample )
+  Appointment.create!(dog_id: @dog_ids.sample, date: Faker::Date.between(1.month.ago, 3.months.from_now), start_time: @time.sample , status: @status.sample, walker_id: @walker_ids.sample, booked: @booked.sample, service_id: @service.sample )
 end
 
  puts("35 appointments")

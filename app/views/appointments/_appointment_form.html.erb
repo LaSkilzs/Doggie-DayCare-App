@@ -37,14 +37,14 @@
             <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :status, class: "control-label" %> 
-              <%= f.select :status, Appointment.statuses.keys, {value: "pending"}, {class: "form-control", :disabled => true}  %>
+              <%= f.select :status, Appointment.statuses.keys, {value: "pending"}, {class: "form-control"}  %>
               </div>
             </div>
           
             <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :pet, class: "control-label" %> 
-              <%=f.collection_select :dog_id, Dog.all, :id, :name, {:selected => params[:dog_id]}, {:class => 'form-control' , :disabled => true} %>
+              <%=f.collection_select :dog_id, Dog.all, :id, :name, {:selected => params[:dog_id]}, {:class => 'form-control'} %>
               </div>
             </div>
           

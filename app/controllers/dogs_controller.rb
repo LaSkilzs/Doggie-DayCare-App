@@ -2,7 +2,11 @@ class DogsController < ApplicationController
   before_action :find_dog, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @dogs = Dog.order(age: :asc)
+    if params[:walker_id]
+      @dogs = Walker.find(params[:walker_id]).dogs.order(age: :asc)
+    else
+      @dogs = Dog.order(age: :asc)
+    end
   end
 
   def new

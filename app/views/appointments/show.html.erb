@@ -22,7 +22,9 @@
                               <li><strong>WALKER:</strong> <%= link_to @appointment.walker.user.name, walker_path(@appointment.walker)%></li>
                             </ul>
                             <button type="button" class="btn btn-success"><%= link_to 'back', new_appointment_path, class: 'white-color' %></button>
-                            <button type="button" class="btn btn-primary"><%= link_to 'edit', edit_dog_appointment_path(@appointment.dog), class: 'white-color' %></button>
+                            <% if current_user.walkers[0] == nil %>
+                              <button type="button" class="btn btn-primary"><%= link_to 'edit', edit_dog_appointment_path(@appointment.dog), class: 'white-color' %></button>
+                            <% end %>
                             <% if @appointment.invoice == nil%>
                                <button type="button" class="btn btn-warning"><%= link_to 'add notes', new_invoice_path, class: 'white-color' %></button>
                             <% else %>

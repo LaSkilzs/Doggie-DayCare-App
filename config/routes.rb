@@ -11,7 +11,11 @@ Rails.application.routes.draw do
  
  resources :owners
  resources :users
- resources :walkers
+ resources :walkers, controller: "walkers" do 
+  resources :appointments, only: [:index]
+  resources :dogs, only: [:index]
+ end
+  
  resources :appointments
  resources :services, only: [:index, :show]
  resources :dogs, controller: "dogs" do

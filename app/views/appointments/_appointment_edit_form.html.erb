@@ -94,7 +94,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                 <%= f.label :walker_id, class: "control-label" %> 
-                <%= f.number_field :walker_id, class: "form-control", :disabled => true %> 
+                <%= f.text_field :walker_id, class: "form-control", value: current_user.walkers[0].id, placeholder: current_user.walkers[0].id %> 
                 </div>
               </div>
 
@@ -105,7 +105,7 @@
                 </div>
               </div>
                 <!-- Button -->
-              <%= f.submit class: "btn btn-secondary btnform" %>
+              <%= f.submit "book appointment", class: "btn btn-secondary btnform" %>
               <% end %>
             </div>
             <% end %>

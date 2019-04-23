@@ -3,7 +3,9 @@ class AppointmentsController < ApplicationController
 
   def index
     if params[:dog_id]
-      @appointments = Dog.find(params[:dog_id]).appointments.page(params[:page]).per(5)
+      @appointments = Dog.find(params[:dog_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
+    elsif params[:walker_id]
+     @appointments = Walker.find(params[:walker_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
     else
      @appointments = Appointment.order(status: :desc, date: :asc).page(params[:page]).per(5)
     end
@@ -19,10 +21,9 @@ class AppointmentsController < ApplicationController
   def create
   @appointment = Appointment.new(appointment_params)
     if @appointment.save
-      Invoice(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment_id)
-      
+      Invoice.create(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment_id)
       flash[:notice] = "appointment was created"
-      redirect_to @appointment
+      redirect_to dog_appointments_path(@appointment.dog.id)
     else       
       render :new
     end

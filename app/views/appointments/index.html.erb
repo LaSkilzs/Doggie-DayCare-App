@@ -32,7 +32,7 @@
                         <td><%=appointment.status %></td>
                         <td align="center">
                         <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
-                        <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(appointment)%></i></button>
+                        <button class="btn btn-warning"><%= link_to 'add notes', dog_invoice_path(appointment.dog.id)%></i></button>
                         </td>
                       </tr>
                       <% end %>

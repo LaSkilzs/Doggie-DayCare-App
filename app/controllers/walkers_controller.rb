@@ -7,10 +7,12 @@ class WalkersController < ApplicationController
 
   def new
     @walker = Walker.new
+      
   end
 
   def create
   @walker = Walker.create(walker_params)
+
   if @walker.save
       flash[:notice] = "walker was created"
       redirect_to @walker
