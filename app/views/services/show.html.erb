@@ -15,7 +15,7 @@
 				<p>Lorem ipsum dolor sit amet, altera propriae iudicabit eos ne. Vel ut accusam tacimates, prima oratio ius ea. Et duo alii verterem principes, te quo putent melius fabulas, ei scripta eligendi appareat duo.</p>
 			</div>
 		</div>
-			<% if  current_user && current_user.walkers[0].id %>			
+			<% if  current_user && current_user.walkers[0] %>			
 				<div class="col-md-12 panelBottom">
 					<div class="col-md-4">
 						<div class="<%= current_user.walkers[0].id ? 'hide' : 'show'%>"  >
@@ -38,7 +38,7 @@
 			<% else %>
 				<div class="col-md-12 panelBottom">
 					<div class="col-md-4">
-						<button class="btn btn-outline-secondary"><%= link_to 'book today', new_appointment_path, class: 'green-color' %></button>
+						<button class="btn btn-outline-secondary"><%= link_to 'book today', owner_path(current_user.owners[0]), class: 'green-color' %></button>
 					</div>
 				<div class="col-md-4 text-left">
 					<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>

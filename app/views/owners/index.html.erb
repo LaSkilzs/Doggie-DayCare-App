@@ -1,5 +1,7 @@
-<h1 class="display-3">All owners</h1>
+<h1 class="display-3 main-title">All owners</h1>
+<% unless current_user.owners[0]%>
 <%= link_to "Create a Owner", new_owner_path, class: "mt-3 white-color" %>
+<% end %>
     <div class="row">
       <div class="card-deck">
       <% @owners.each do |owner| %>
@@ -7,7 +9,7 @@
           <div class="card" style="width: 25rem;">
             <img class="card-img-top" src=<%= owner.image %> alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title"><%=link_to owner.user.name, owner_path(owner) %></h5>
+              <h5 class="card-title"><%=link_to owner.user.name, owner_path(owner), class: 'green-color' %></h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Street: <%= owner.address %>  </li>

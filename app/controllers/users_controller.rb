@@ -17,9 +17,9 @@ class UsersController < ApplicationController
   if @user.save
       log_in(@user)
       flash[:notice] = "user was created"
-      if @user.owners[0].id 
+      if @user.owners[0] 
         redirect_to owner_path(@user.owners[0])
-      elsif @user.walkers[0].id
+      elsif @user.walkers[0]
         redirect_to walker_path(@user.walkers[0])
       else
         @user

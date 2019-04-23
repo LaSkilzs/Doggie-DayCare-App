@@ -2,7 +2,12 @@ class InvoicesController < ApplicationController
   before_action :find_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
-     @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
+    # if params[:dog_id]
+    #  @invoices = Dog.find(params[:dog_id]).invoices.order(appointment_id: :asc).page(params[:page]).per(5)
+    # else
+    #  @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
+    # end
+    @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
   end
 
   def new

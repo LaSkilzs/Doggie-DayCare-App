@@ -39,12 +39,13 @@
                 <%= f.text_field :status, class: "form-control",placeholder: 'pending', :disabled => true %> 
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                <%= f.label :dog_id, class: "control-label" %> 
-                 <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control', :disabled => true} %> 
-                </div>
+              <div class="col-sm-12">
+              <div class="form-group">
+              <%= f.label :pet, class: "control-label" %> 
+              <%=f.collection_select :dog_id, Dog.all, :id, :name, {:selected => params[:dog_id]}, {:class => 'form-control' , :disabled => true} %>
               </div>
+            </div>
+          
 
               <div class="col-md-12">
                 <div class="form-group">

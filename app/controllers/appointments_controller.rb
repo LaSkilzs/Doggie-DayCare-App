@@ -2,11 +2,18 @@ class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
+    if params[:dog_id]
+      @appointments = Dog.find(params[:dog_id]).appointments.page(params[:page]).per(5)
+    else
      @appointments = Appointment.order(status: :desc, date: :asc).page(params[:page]).per(5)
+    end
   end
 
   def new
     @appointment = Appointment.new
+    if params[:dog_id]
+      @dog = Dog.find(params[:dog_id])
+    end
   end
 
   def create

@@ -16,7 +16,7 @@
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to 'View', service_path(service), class: 'green-color' %></button>
                   <% if  current_user && current_user.role == 'owner' %>
-                    <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to 'Book', new_appointment_path %></button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to 'Book', owner_path(current_user.owners[0]), class: 'green-color' %></button>
                   <% end %>
                 </div>
               </div>   

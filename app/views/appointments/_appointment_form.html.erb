@@ -37,14 +37,14 @@
             <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :status, class: "control-label" %> 
-              <%= f.select :status, Appointment.statuses.keys, {value: "pending"}, {class: "form-control"}  %>
+              <%= f.select :status, Appointment.statuses.keys, {value: "pending"}, {class: "form-control", :disabled => true}  %>
               </div>
             </div>
           
             <div class="col-sm-12">
               <div class="form-group">
               <%= f.label :pet, class: "control-label" %> 
-              <%=f.collection_select :dog_id, Dog.all, :id, :name, {}, {:class => 'form-control'} %>
+              <%=f.collection_select :dog_id, Dog.all, :id, :name, {:selected => params[:dog_id]}, {:class => 'form-control' , :disabled => true} %>
               </div>
             </div>
           
@@ -55,8 +55,6 @@
               <%=f.collection_select :service_id, Service.all, :id, :name, {}, {:class => 'form-control'} %>
               </div>
             </div>
-              
-
             <div class="col-sm-12">
               <div class="form-group">
                 <%= f.label :walker_id %>
