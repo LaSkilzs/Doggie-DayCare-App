@@ -46,7 +46,7 @@
       </div>
     </div>
   <div class="redirects">
-    <%= link_to "back", login_path, class: "mt-3 white-color"%> | <%= link_to "home", root_path, class: "mt-3 white-color" %>
+    <%= link_to "back", owner_path(current_user.owners[0]), class: "mt-3 white-color"%> | <%= link_to "home", root_path, class: "mt-3 white-color" %>
   </div>
 <% else %>
  <div class="redirects">

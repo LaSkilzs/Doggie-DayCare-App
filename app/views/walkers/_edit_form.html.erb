@@ -31,14 +31,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <%= f.label :experience %>
-                <%= f.select :experience, Walker.experiences.keys, {}, {class: "form-control"}  %>
+                <%= f.select :experience, Walker.experiences.keys, {},{class: "form-control", :disabled => true} %>
               </div>
             </div>
           
             <div class="col-md-6">
               <div class="form-group">
                 <%= f.label :rating, class: "control-label" %> 
-                <%= f.number_field :rating, max: 10, min: 0, class:"form-control input-md", placeholder: '0'%>
+                <%= f.number_field :rating, max: 10, min: 0, class:"form-control input-md", placeholder: '0', :disabled => true %>
               </div>
             </div>
 
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-  <%= link_to "back", login_path %> | <%= link_to "home", root_path %>
+    <%= link_to "back", walker_path(@walker), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
 <% else %>
  <div class="redirects"> 
   <%= link_to "home", root_path %> |

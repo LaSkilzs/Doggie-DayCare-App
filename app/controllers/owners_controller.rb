@@ -16,7 +16,7 @@
       flash[:notice] = "Owner was created"
       redirect_to @owner
     else
-      @errors = @owner.errors.full_message
+      @errors = @owner.errors.full_messages
       render :new
     end
   end

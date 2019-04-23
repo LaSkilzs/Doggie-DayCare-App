@@ -11,10 +11,36 @@
   padding: 0;
 }
 
+.main-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+}
+
+a.directions {
+  text-decoration: none !important;
+  font-size: 1.2rem !important;
+  color: white !important;
+}
 a,
 a:focus,
 a:hover {
+  // color: green;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+nav a,
+nav a:focus,
+nav a:hover {
   color: green;
+  text-decoration: none;
+}
+td a,
+td a:focus,
+td a:hover {
+  color: green;
+  text-decoration: none;
 }
 
 .btn-secondary,
@@ -26,6 +52,13 @@ a:hover {
   border: 0.05rem solid #fff;
 }
 
+.size {
+  font-size: 1.2rem !important;
+}
+
+.increase {
+  font-size: 4rem;
+}
 .spacemaker {
   margin-top: 100px;
 }
@@ -75,6 +108,9 @@ a:hover {
 .white-color {
   color: white;
 }
+.green-color {
+  color: green;
+}
 
 body {
   padding: 0 1.5rem;
@@ -122,6 +158,9 @@ body {
 .btnform {
   margin-left: 15px;
   margin-top: 15px;
+}
+.hide {
+  display: none;
 }
 
 .all-title {
@@ -221,6 +260,36 @@ body {
 .dog-image {
   width: 330px;
   height: 330px;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  border: 2rem solid green;
+  margin-left: 3rem;
+}
+.walker-image {
+  width: 30rem;
+  height: 330px;
+  border: 1.5rem solid green;
+}
+
+.dogbtn {
+  border: 2px solid green;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: green;
+}
+.dogbtn:hover {
+  color: green;
+}
+
+.dogshow {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.dogshow .fas {
+  color: #301d1d;
+  font-size: 1.6rem;
+  margin: 0.2rem;
 }
 
 .firma-aciklama {
@@ -290,7 +359,12 @@ span.itemPrice {
 
 .content-list {
   list-style-type: none;
-  padding: 50px;
+  padding: 6rem;
+  margin: auto;
+}
+.content-list li {
+  padding: 0.3rem;
+  font-size: 1.2rem;
 }
 
 .btnowner a {

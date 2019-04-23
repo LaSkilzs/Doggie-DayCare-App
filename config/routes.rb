@@ -5,11 +5,19 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'pages/contact'
   get 'pages/login'
+
+ 
+
+ 
  resources :owners
  resources :users
  resources :walkers
- resources :services
- resources :dogs
  resources :appointments
- resources :invoices
+ resources :services, only: [:index, :show]
+ resources :dogs, controller: "dogs" do
+  resources :appointments
+  resources :invoices, only: [:index, :show, :update]
+ end
+  resources :invoices
+ 
 end

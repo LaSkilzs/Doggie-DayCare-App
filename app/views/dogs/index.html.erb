@@ -1,7 +1,9 @@
 <div class='spacemaker'></div>
 <section id="dogs">
-<h1 class="display-4">Our Furry Companions</h1>
-<%= link_to "Create a Dog", new_dog_path, class: " mt-3 white-color"%>
+<h1 class="display-4 main-title">Our Furry Companions</h1>
+<% unless current_user.walkers[0].id %>
+  <%= link_to "Create a Dog", new_dog_path, class: " mt-3 white-color"%>
+<% end %>
 <div class="row">
   <div class="card-deck">
     <% @dogs.each do |dog| %>
@@ -16,7 +18,7 @@
             <li class="list-group-item">Breed: <%= dog.breed %>  </li>
           </ul>
           <div class="card-body">
-           <button type="button" class="btn btn-md btn-outline-secondary"><%=link_to 'view', dog_path(dog) %></button>
+           <button type="button" class="btn btn-md btn-outline-secondary"><%=link_to 'view', dog_path(dog), class: 'green-color' %></button>
           </div>
         </div>
       </div>

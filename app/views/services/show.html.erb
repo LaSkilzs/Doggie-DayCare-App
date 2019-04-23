@@ -1,6 +1,6 @@
 <section id="serviceshow">
 	<div class="container">    
-		<h1 class="display-3 headTitles"><%=@service.name%></h1>
+		<h1 class="display-3 headTitles main-title"><%=@service.name%></h1>
 		<div class="row panel panel--styled">			
 			<div class="col-md-12 panelTop">	
 			<div class="col-md-5">	
@@ -15,23 +15,45 @@
 				<p>Lorem ipsum dolor sit amet, altera propriae iudicabit eos ne. Vel ut accusam tacimates, prima oratio ius ea. Et duo alii verterem principes, te quo putent melius fabulas, ei scripta eligendi appareat duo.</p>
 			</div>
 		</div>
-		<div class="col-md-12 panelBottom">
-			<div class="col-md-4">
-				<button class="btn btn-outline-secondary"><%= link_to 'book today', new_appointment_path %></button>
-			</div>
-			<div class="col-md-4 text-left">
-				<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
-			</div>
-			<div class="col-md-4">
-				<div class="stars">
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
+			<% if  current_user && current_user.walkers[0] %>			
+				<div class="col-md-12 panelBottom">
+					<div class="col-md-4">
+						<div class="<%= current_user.walkers[0].id ? 'hide' : 'show'%>"  >
+							<button class="btn btn-outline-secondary"><%= link_to 'book today', new_appointment_path %></button>
+						</div>
+					</div>
+					<div class="col-md-4 text-left">
+						<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
+					</div>
+					<div class="col-md-4">
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+					</div>
+				</div>
+			<% else %>
+				<div class="col-md-12 panelBottom">
+					<div class="col-md-4">
+						<button class="btn btn-outline-secondary"><%= link_to 'book today', owner_path(current_user.owners[0]), class: 'green-color' %></button>
+					</div>
+				<div class="col-md-4 text-left">
+					<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
+				</div>
+				<div class="col-md-4">
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+					</div>
 				</div>
 			</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </section>
