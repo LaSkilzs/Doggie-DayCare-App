@@ -44,8 +44,13 @@
                 <%= page_entries_info @invoices %>
               </div>
             </div>
-        </div>
+              </div>
       </div>
+            <% if current_user.walkers[0].id%>
+             <%= link_to "back", walker_path(current_user.walkers[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+             <% else %>
+            <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+             <% end %>
     </div>
   </div>
 </div>

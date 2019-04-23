@@ -31,7 +31,7 @@
                         <td><%= link_to appointment.dog.name, dog_path(appointment.dog) %></td>
                         <td><%=appointment.status %></td>
                         <td align="center">
-                        <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment)%></i></button>
+                        <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
                         <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(appointment)%></i></button>
                         </td>
                       </tr>
@@ -48,5 +48,12 @@
       </div>
     </div>
   </div>
+     </div>
+            <% if current_user.walkers[0].id%>
+             <%= link_to "back", walker_path(current_user.walkers[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+             <% else %>
+            <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+             <% end %>
+    </div>
 </div>
     
