@@ -1,13 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
-
+  include AppointmentsHelper
+  
   def index
     if params[:dog_id]
       @appointments = Dog.find(params[:dog_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
     elsif params[:walker_id]
      @appointments = Walker.find(params[:walker_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
     else
-     @appointments = Appointment.order(status: :desc, date: :asc).page(params[:page]).per(5)
+     @appointments = Appointment.where(status: :pending, booked: false).order(date: :asc).page(params[:page]).per(5)
     end
   end
 

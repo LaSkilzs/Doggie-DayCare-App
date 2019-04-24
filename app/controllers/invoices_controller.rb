@@ -7,7 +7,8 @@ class InvoicesController < ApplicationController
     elsif params[:owner_id]
       @invoices = Owner.find(params[:owner_id]).invoices.order(appointment_id: :asc).page(params[:page]).per(5)
     else
-     @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
+      @appointments = getUser(current_user).walkers[0].appointments
+      @invoices = @appointments.map{|appointment|appointment.invoice}
     end
   end
 

@@ -18,6 +18,7 @@
                       <th>service</th>
                       <th>pet</th>
                       <th>status</th>
+                      <th>booked?</th>
                       <th><em class="fa fa-cog"></em></th>
                     </tr> 
                   </thead>
@@ -30,13 +31,18 @@
                         <td><%= link_to appointment.service.name, service_path(appointment.service) %></td>
                         <td><%= link_to appointment.dog.name, dog_path(appointment.dog) %></td>
                         <td><%=appointment.status %></td>
-                        <td align="center">
-                        <% if current_user.owners[0]%>
-                        <button class="btn btn-success"><%= link_to 'edit', edit_appointment_path(appointment), class: 'white-color' %></i></button>
+                        <% if current_user.owners[0] && current_user.role == "owner"%>
+                          <td class="<%= appointment.booked ? 'green-color' : 'red-color' %>"> <%=appointment.booked %></td>
                         <% else %>
-                        <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
+                          <td class="<%= appointment.booked ? 'green-color' : 'red-color' %>"> <%= appointment.booked? %></td>
                         <% end %>
-                        <% if appointment.invoice %>
+                        <td align="center">
+                        <% if current_user.owners[0] && current_user.role == "owner"%>
+                          <button class="btn btn-success"><%= link_to 'edit', edit_dog_appointment_path(appointment.dog_id, appointment), class: 'white-color' %></i></button>
+                        <% else %>
+                          <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
+                        <% end %>
+                        <% if appointment.booked %>
                           <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(appointment)%></i></button>
                         <% end %>
                         </td>
@@ -55,7 +61,7 @@
     </div>
   </div>
      </div>
-            <% if current_user.walkers[0]%>
+            <% if current_user.walkers[0] && current_user.role == "walker"%>
              <%= link_to "back", walker_path(current_user.walkers[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
              <% else %>
             <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
