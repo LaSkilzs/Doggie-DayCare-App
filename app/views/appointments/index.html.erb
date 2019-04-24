@@ -18,6 +18,7 @@
                       <th>service</th>
                       <th>pet</th>
                       <th>status</th>
+                      <th>booked?</th>
                       <th><em class="fa fa-cog"></em></th>
                     </tr> 
                   </thead>
@@ -25,14 +26,25 @@
                       <% @appointments.each do|appointment|%>
                       <tr class="ok">
                         <td class="avatar-image"><img src=<%= appointment.dog.image %> alt="pic" class="invoice-image"></td>
-                        <td><%=appointment.date %></td>
-                        <td><%=appointment.start_time %></td>
+                        <td><%=appointment.date.strftime('%B %d, %Y') %></td>
+                        <td><%=appointment.start_time.strftime('%I:%M %P') %></td>
                         <td><%= link_to appointment.service.name, service_path(appointment.service) %></td>
                         <td><%= link_to appointment.dog.name, dog_path(appointment.dog) %></td>
                         <td><%=appointment.status %></td>
+                        <% if current_user.owners[0] && current_user.role == "owner"%>
+                          <td class="<%= appointment.booked ? 'green-color' : 'red-color' %>"> <%=appointment.booked %></td>
+                        <% else %>
+                          <td class="<%= appointment.booked ? 'green-color' : 'red-color' %>"> <%= appointment.booked? %></td>
+                        <% end %>
                         <td align="center">
-                        <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
-                        <button class="btn btn-warning"><%= link_to 'add notes', dog_invoice_path(appointment.dog.id)%></i></button>
+                        <% if current_user.owners[0] && current_user.role == "owner"%>
+                          <button class="btn btn-success"><%= link_to 'edit', edit_dog_appointment_path(appointment.dog_id, appointment), class: 'white-color' %></i></button>
+                        <% else %>
+                          <button class="btn btn-success"><%= link_to 'book', edit_appointment_path(appointment), class: 'white-color' %></i></button>
+                        <% end %>
+                        <% if appointment.booked %>
+                          <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(appointment)%></i></button>
+                        <% end %>
                         </td>
                       </tr>
                       <% end %>
@@ -49,7 +61,7 @@
     </div>
   </div>
      </div>
-            <% if current_user.walkers[0]%>
+            <% if current_user.walkers[0] && current_user.role == "walker"%>
              <%= link_to "back", walker_path(current_user.walkers[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
              <% else %>
             <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>

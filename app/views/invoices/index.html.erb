@@ -3,7 +3,11 @@
     <div id="user" class="col-md-12" >
       <div class="panel panel-primary panel-table">
         <div class="panel-heading " style="padding:5px;">
+        <% if current_user && current_user.walkers[0] && current_user.role == "walker"%>
+          <div class="text-center"><h1 class="increase">Scheduled Appointments</h1></div>
+          <% else %>
           <div class="text-center"><h1 class="increase">Invoice List</h1></div>
+          <%end %>
             <div class="panel-body">
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="list">
@@ -25,23 +29,25 @@
                     <% @invoices.each do|invoice|%>
                       <tr class="ok">
                         <td class="avatar-image"><img src=<%= invoice.appointment.dog.image %> alt="pic" class="invoice-image"></td>
-                        <td><%=invoice.appointment.date %></td>
-                        <td><%=invoice.amount %></td>
+                        <td><%=invoice.appointment.date.strftime('%B %d, %Y') %></td>
+                        <td>$<%=invoice.amount %>0</td>
                         <td><%=invoice.walked %></td>
                         <td><%=invoice.walk_rating %></td>
                         <td><%= link_to invoice.appointment.service.name, service_path(invoice.appointment.service) %></td>
                         <td><%= link_to invoice.appointment.walker.user.name, walker_path(invoice.appointment.walker.user) %></td>
                         <td><%=invoice.appointment.status %></td>
                         <td align="center">
-                          <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(invoice)%></i></button>
+                          <button class="btn btn-warning"><%= link_to 'add notes', edit_invoice_path(invoice)%></i></button>
                         </td>
                       </tr>
                     <% end %>
                     </tbody>
                   </table>
                 </div><!-- END id="list" -->
-                <%= paginate @invoices %>
-                <%= page_entries_info @invoices %>
+                <% if current_user && current_user.role == 'owner'%>
+                  <%= paginate @invoices %> 
+                  <%= page_entries_info @invoices %> 
+                <% end %>
               </div>
             </div>
               </div>
@@ -51,7 +57,7 @@
              <% elsif current_user.walkers[0] %>
             <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
             <% else %>
-            <%= link_to "create account", new_owner_path, class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+            <%= link_to "home", root_path, class: 'directions' %>
              <% end %>
     </div>
   </div>

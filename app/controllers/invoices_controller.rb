@@ -2,12 +2,14 @@ class InvoicesController < ApplicationController
   before_action :find_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
-    # if params[:dog_id]
-    #  @invoices = Dog.find(params[:dog_id]).invoices.order(appointment_id: :asc).page(params[:page]).per(5)
-    # else
-    #  @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
-    # end
-    @invoices = Invoice.order(appointment_id: :asc).page(params[:page]).per(5)
+    if params[:dog_id]
+     @invoices = Dog.find(params[:dog_id]).invoices.order(appointment_id: :asc).page(params[:page]).per(5)
+    elsif params[:owner_id]
+      @invoices = Owner.find(params[:owner_id]).invoices.order(appointment_id: :asc).page(params[:page]).per(5)
+    else
+      @appointments = getUser(current_user).walkers[0].appointments
+      @invoices = @appointments.map{|appointment|appointment.invoice}
+    end
   end
 
   def new
@@ -26,19 +28,22 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    if params[:dog_id]
+      @dog = Dog.find(params[:id])
+    end
   end
   
   def edit
   end
 
   def update
-    if @invoice.upate_attributes(invoice_params)
-      flash[:notice] = "appointment was created"
-      redirect_to @invoice
-    else
-      @errors = @invoice.errors.full_message
-      render :edit
-    end
+      if @invoice.update(invoice_params)
+        flash[:notice] = "appointment was created"
+        redirect_to @invoice
+      else
+        @errors = @invoice.errors.full_message
+        render :edit
+      end
   end
 
   def destroy

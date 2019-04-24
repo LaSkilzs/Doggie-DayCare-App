@@ -1,13 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
-
+  include AppointmentsHelper
+  
   def index
     if params[:dog_id]
       @appointments = Dog.find(params[:dog_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
     elsif params[:walker_id]
      @appointments = Walker.find(params[:walker_id]).appointments.order(status: :desc, date: :asc).page(params[:page]).per(5)
     else
-     @appointments = Appointment.order(status: :desc, date: :asc).page(params[:page]).per(5)
+     @appointments = Appointment.where(status: :pending, booked: false).order(date: :asc).page(params[:page]).per(5)
     end
   end
 
@@ -20,10 +21,12 @@ class AppointmentsController < ApplicationController
 
   def create
   @appointment = Appointment.new(appointment_params)
-    if @appointment.save
-      Invoice.create(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment_id)
+  if @appointment.save
+      @owner = Dog.find(appointment_params[:dog_id]).owner
+      @invoice = Invoice.create(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment.id, owner_id: @owner.id)
+    
       flash[:notice] = "appointment was created"
-      redirect_to dog_appointments_path(@appointment.dog.id)
+      redirect_to invoice_path(@invoice)
     else       
       render :new
     end

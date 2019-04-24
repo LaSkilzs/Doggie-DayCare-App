@@ -1,4 +1,4 @@
-<% if current_user  != nil && current_user.owners[0] %>
+<% if current_user  != nil && current_user.owners[0]  && current_user.role == "owner"%>
    <div class="container">
       <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <a class="navbar-brand navtitle" href="#"><%= @title %></a>
@@ -9,7 +9,7 @@
         <%= link_to "LogOut", logout_path, method: :delete, class: 'nav-link' %>
         </nav>
     </div>
-<% elsif current_user != nil && current_user.walkers[0]  %>
+<% elsif current_user != nil && current_user.walkers[0] && current_user.role == "walker"  %>
   <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
      <a class="navbar-brand navtitle" href="#"><%= @title %></a>

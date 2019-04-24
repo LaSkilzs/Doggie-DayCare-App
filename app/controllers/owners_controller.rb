@@ -1,18 +1,24 @@
  class OwnersController < ApplicationController
   before_action :find_owner, only: [:show, :edit, :update, :destroy]
+  include OwnersHelper
 
   def index
      @owners = Owner.all
   end
 
   def new
-    @owner = Owner.new
+    if current_user.owners[0]
+      getUser(current_user).update!(role: "owner")
+      redirect_to owner_path(current_user.owners[0])
+    else
+      @owner = Owner.new
+    end
   end
 
   def create
-  
   @owner = Owner.create(owner_params)
   if @owner.save
+      @owner.user.update!(role: "owner")
       flash[:notice] = "Owner was created"
       redirect_to @owner
     else

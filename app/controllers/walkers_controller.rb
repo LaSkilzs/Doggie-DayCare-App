@@ -1,19 +1,25 @@
 class WalkersController < ApplicationController
   before_action :find_walker, only: [:show, :edit, :update, :destroy]
+  include WalkersHelper
 
   def index
      @walkers = Walker.all
   end
 
   def new
-    @walker = Walker.new
-      
+    if current_user.walkers[0]
+      getUser(current_user).update!(role: "walker")
+      redirect_to walker_path(current_user.walkers[0])
+    else
+      @walker = Walker.new 
+    end  
   end
 
   def create
   @walker = Walker.create(walker_params)
 
   if @walker.save
+      @walker.user.update!(role: "walker")
       flash[:notice] = "walker was created"
       redirect_to @walker
     else

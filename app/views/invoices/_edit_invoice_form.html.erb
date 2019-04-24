@@ -1,0 +1,59 @@
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+<div class="container">
+  <div class="panel">
+    <div class="card-body">
+       <%= form_for @invoice,  :html => {class: "former"}, url: @invoices_path, method: 'PATCH' do |f| %> 
+       <div class="feature block">
+       <div class="col-md-12">  
+        <div class="form-group">
+          <%= f.label :amount %> 
+          <%= f.number_field :amount, class:"form-control", placeholder: 'amount', :disabled => true %>
+        </div> 
+       </div> 
+       <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :walked?%> 
+          <%= f.radio_button :walked, "false", class:"form-control"%>
+        </div> 
+       </div> 
+       <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :walk_rating %> 
+          <%= f.number_field :walk_rating, min: 0, max: 10,class:"form-control", placeholder: "rate walker 1-10"%>
+        </div> 
+       </div> 
+       <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :appointment_id %> 
+          <%= f.number_field :appointment_id, class:"form-control", :disabled => true %>
+        </div> 
+       </div> 
+       </div>
+        <div class="form-group">
+          <%= f.label :notes%>           
+          <%= f.text_area :notes, class: "form-control", placeholder: 'notes' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :owner_comments %> 
+          <%= f.text_area :owner_comments, class: "form-control", placeholder: 'owner_comments' %>
+        </div>
+        <div class="form-group"">
+          <%= f.label :walker_comments %>             
+          <%= f.text_area :walker_comments, class: "form-control", placeholder: 'walker_comments' %>
+        </div>
+        <%=f.submit class: "btn btn-success" %>
+        <% end %>
+    </div>
+   </div>
+    <div >
+      <%= link_to "back", invoice_path(@invoice), class: "mt-3 white-color" %> | <%= link_to "invoice home", invoices_path, class: "mt-3 white-color"  %>
+  </div>
+</div>

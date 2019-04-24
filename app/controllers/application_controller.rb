@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?, :redirect
+  helper_method :current_user, :logged_in?, :redirect, :booked?, :changeAccounts
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
+  end
+
+   def getUser(current_user)
+    @user = User.find(current_user.id)
   end
 
   def log_in(user)
@@ -19,16 +23,10 @@ class ApplicationController < ActionController::Base
     current_user = nil
   end
 
-  def owner?
-    current_user.id === session[:user_id]
-  end
-
-  def walker?
-
-  end
 
   def redirect(path)
     redirect_to path
   end
+
 
 end
