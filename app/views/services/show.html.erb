@@ -35,13 +35,13 @@
 						</div>
 					</div>
 				</div>
-			<% else %>
+			<% elsif current_user && current_user.owners[0] != nil %>
 				<div class="col-md-12 panelBottom">
 					<div class="col-md-4">
 						<button class="btn btn-outline-secondary"><%= link_to 'book today', owner_path(current_user.owners[0]), class: 'green-color' %></button>
 					</div>
 				<div class="col-md-4 text-left">
-					<h5>Price: <span class="itemPrice"><%=@service.pkg_amount%></span></h5>
+					<h5>Price: <span class="itemPrice"> $ <%=@service.pkg_amount.to_f%>0</span></h5>
 				</div>
 				<div class="col-md-4">
 					<div class="stars">

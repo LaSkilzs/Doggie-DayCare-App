@@ -33,7 +33,7 @@
                         <td><%= link_to invoice.appointment.walker.user.name, walker_path(invoice.appointment.walker.user) %></td>
                         <td><%=invoice.appointment.status %></td>
                         <td align="center">
-                          <button class="btn btn-warning"><%= link_to 'add notes', invoice_path(invoice)%></i></button>
+                          <button class="btn btn-warning"><%= link_to 'add notes', edit_invoice_path(invoice)%></i></button>
                         </td>
                       </tr>
                     <% end %>
@@ -51,7 +51,7 @@
              <% elsif current_user.walkers[0] %>
             <%= link_to "back", owner_path(current_user.owners[0]), class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
             <% else %>
-            <%= link_to "create account", new_owner_path, class: 'directions' %> | <%= link_to "home", root_path, class: 'directions' %>
+            <%= link_to "home", root_path, class: 'directions' %>
              <% end %>
     </div>
   </div>

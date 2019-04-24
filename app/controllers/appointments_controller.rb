@@ -20,10 +20,12 @@ class AppointmentsController < ApplicationController
 
   def create
   @appointment = Appointment.new(appointment_params)
-    if @appointment.save
-      Invoice.create(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment_id)
+  if @appointment.save
+      @owner = Dog.find(appointment_params[:dog_id]).owner
+      @invoice = Invoice.create(amount: @appointment.service.pkg_amount, walked: false, walk_rating: 0, appointment_id: @appointment.id, owner_id: @owner.id)
+    
       flash[:notice] = "appointment was created"
-      redirect_to dog_appointments_path(@appointment.dog.id)
+      redirect_to invoice_path(@invoice)
     else       
       render :new
     end

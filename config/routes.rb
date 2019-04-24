@@ -9,7 +9,9 @@ Rails.application.routes.draw do
  
 
  
- resources :owners
+ resources :owners, controller: "owners" do 
+  resources :invoices, only: [:index]
+ end
  resources :users
  resources :walkers, controller: "walkers" do 
   resources :appointments, only: [:index]
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
  resources :services, only: [:index, :show]
  resources :dogs, controller: "dogs" do
   resources :appointments
-  resources :invoices, only: [:index, :show, :update]
  end
   resources :invoices
  

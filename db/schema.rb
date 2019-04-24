@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_223212) do
+ActiveRecord::Schema.define(version: 2019_04_24_010342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_223212) do
     t.string "package"
     t.string "bundle"
     t.string "max_time"
-    t.float "pkg_amount"
-    t.float "hourly_rate"
+    t.decimal "pkg_amount", precision: 8, scale: 2
+    t.decimal "hourly_rate", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
