@@ -7,4 +7,12 @@ module AppointmentsHelper
     end
   end
 
+  def self.formatDate
+    self.date.strftime('%B %d, %Y')
+  end
+
+  def self.formatTime
+    self.start_time.strftime('%I:%M %P')
+  end
+
 end

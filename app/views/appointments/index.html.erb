@@ -26,8 +26,8 @@
                       <% @appointments.each do|appointment|%>
                       <tr class="ok">
                         <td class="avatar-image"><img src=<%= appointment.dog.image %> alt="pic" class="invoice-image"></td>
-                        <td><%=appointment.date %></td>
-                        <td><%=appointment.start_time %></td>
+                        <td><%=appointment.date.strftime('%B %d, %Y') %></td>
+                        <td><%=appointment.start_time.strftime('%I:%M %P') %></td>
                         <td><%= link_to appointment.service.name, service_path(appointment.service) %></td>
                         <td><%= link_to appointment.dog.name, dog_path(appointment.dog) %></td>
                         <td><%=appointment.status %></td>

@@ -29,7 +29,7 @@
                     <% @invoices.each do|invoice|%>
                       <tr class="ok">
                         <td class="avatar-image"><img src=<%= invoice.appointment.dog.image %> alt="pic" class="invoice-image"></td>
-                        <td><%=invoice.appointment.date %></td>
+                        <td><%=invoice.appointment.date.strftime('%B %d, %Y') %></td>
                         <td>$<%=invoice.amount %>0</td>
                         <td><%=invoice.walked %></td>
                         <td><%=invoice.walk_rating %></td>
