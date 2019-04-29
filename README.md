@@ -1,24 +1,27 @@
-# README
+# Sniff Scratch N' Shake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sniff Scratch N Shake is a dog walking app and board walking that allow dog owners and dog walkers schedule and book dog services.
 
-Things you may want to cover:
+1. Full CRUD operations for appointments, profiles.
+2. MVC design
+3. Relational Database Design
+4. Nested Routes
+5. Pagination
+6. Sessions
+7. Authorization and Authentication
+8. Bootstrap
+9. Testing
 
-* Ruby version
+# Technologies
 
-* System dependencies
+1. Ruby
+2. Rails
+3. CSS
+4. Bootstrap
+5. Rspec
 
-* Configuration
+## Project Demo & GIFS
 
-* Database creation
+## Authors
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+By La Fountain
