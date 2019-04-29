@@ -21,11 +21,13 @@ Sniff Scratch N Shake is a dog walking app and board walking that allow dog owne
 5. Rspec
 
 ## Project Demo & GIFS
-
 Doggie DayCare(Demo)
-
 [![Doggie Daycare](http://img.youtube.com/vi/Ld7kXqiSvJo/0.jpg)](http://www.youtube.com/watch?v=Ld7kXqiSvJo "hairsalonapp")
-[![/Users/lafountain/Desktop/Portfolio/SniffScratchNShake/Doggie-DayCare-App/Doggie_Daycare.png](http://img.youtube.com/vi/Ld7kXqiSvJo/0.jpg)](http://www.youtube.com/watch?v=Ld7kXqiSvJo "hairsalonapp")
+
+
+Backend Database Model
+https://go.gliffy.com/go/share/smnnx14rj4oteojp0e4e
+
 ## Authors
 
 By La Fountain
