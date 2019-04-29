@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'pages/login'
 
- 
-
- 
  resources :owners, controller: "owners" do 
   resources :invoices, only: [:index]
  end
@@ -20,9 +17,19 @@ Rails.application.routes.draw do
   
  resources :appointments
  resources :services, only: [:index, :show]
+
+
+
+
+ 
+
  resources :dogs, controller: "dogs" do
   resources :appointments
  end
+
+
+
+
   resources :invoices
  
 end
