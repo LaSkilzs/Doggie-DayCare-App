@@ -11,7 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
-require "capybara/rspec"
+# require "capybara/rspec"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -36,7 +36,7 @@ module Doggie
       :routing_specs => true,
       :controller_specs => true,
       :request_specs => true
-      g.fixture_replacement :factory_bot, :dir => "spec/factories" 
+      g.fixture_replacement :factory_bot, :dir => "spec/factories"
     end
 
     # Don't generate system test files.
