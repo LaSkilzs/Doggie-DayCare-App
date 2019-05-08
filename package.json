@@ -1,6 +1,5 @@
 {
   "name": "doggie",
   "private": true,
-  "dependencies": {},
-  "stack": "heroku-16"
+  "dependencies": {}
 }

@@ -51,7 +51,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
-  gem 'capybara'
   gem 'guard-rspec'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
